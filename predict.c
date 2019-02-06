@@ -177,7 +177,7 @@ char qthfile[50], tlefile[50], dbfile[50], temp[80], output[25],
     serial_port[15], resave = 0, reload_tle = 0, netport[7],
                      once_per_second = 0, ephem[5], sat_sun_status, findsun,
                      calc_squint, database = 0, xterm, io_lat = 'N',
-                     io_lon = 'W';
+                     io_lon = 'E';
 
 int indx, antfd, iaz, iel, ma256, isplat, isplong, socket_flag = 0, Flags = 0;
 
