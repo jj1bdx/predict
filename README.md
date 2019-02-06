@@ -37,4 +37,4 @@ http://www.space-track.org, and http://www.amsat.org/.
 
 ## License
 
-GPLv2 (see [LICENSE](./LICENSE))
+GPLv3 (see [LICENSE](./LICENSE))
