@@ -1,7 +1,7 @@
 /***************************************************************************\
 *          PREDICT: A satellite tracking/orbital prediction program         *
 *          Project started 26-May-1991 by John A. Magliacane, KD2BD         *
-*                        Last update: 14-May-2006                           *
+*                        Last update: 04-May-2018                           *
 *****************************************************************************
 *                                                                           *
 * This program is free software; you can redistribute it and/or modify it   *
@@ -36,15 +36,6 @@
 #include <termios.h>
 
 #include "predict.h"
-
-
-/* Bump up satellites from 24 to something more;
- * Have to give Curses display an offset to accommodate.
- * MAX_SATS has to be even (for now)
- * We pick 94 because that's the max printable chars for our Single picker. :-(
- */
-#define MAX_SATS 94
-#define OFFSET ((MAX_SATS - 24) / 2)
 
 /* Constants used by SGP4/SDP4 code */
 
@@ -146,7 +137,7 @@ struct	{  char line1[70];
 	   double nddot6;
   	   double bstar;
 	   long orbitnum;
-	}  sat[MAX_SATS];
+	}  sat[24];
 
 struct	{  char callsign[17];
 	   double stnlat;
@@ -168,7 +159,7 @@ struct	{  char name[25];
 	   unsigned char dayofweek[10];
 	   int phase_start[10];
 	   int phase_end[10];
-	}  sat_db[MAX_SATS];
+	}  sat_db[24];
 
 /* Global variables for sharing data among functions... */
 
@@ -181,7 +172,7 @@ double	tsince, jul_epoch, jul_utc, eclipse_depth=0,
 	moon_az, moon_el, moon_dx, moon_ra, moon_dec, moon_gha, moon_dv;
 
 char	qthfile[50], tlefile[50], dbfile[50], temp[80], output[25],
-	serial_port[15], resave=0, reload_tle=0, netport[6],
+	serial_port[15], resave=0, reload_tle=0, netport[7],
 	once_per_second=0, ephem[5], sat_sun_status, findsun,
 	calc_squint, database=0, xterm, io_lat='N', io_lon='W';
 
@@ -195,16 +186,16 @@ unsigned char val[256];
 /* The following variables are used by the socket server.  They
    are updated in the MultiTrack() and SingleTrack() functions. */
 
-char	visibility_array[MAX_SATS], tracking_mode[30];
+char	visibility_array[24], tracking_mode[30];
 
-float	az_array[MAX_SATS], el_array[MAX_SATS], long_array[MAX_SATS], lat_array[MAX_SATS],
-	footprint_array[MAX_SATS], range_array[MAX_SATS], altitude_array[MAX_SATS],
-	velocity_array[MAX_SATS], eclipse_depth_array[MAX_SATS], phase_array[MAX_SATS],
-	squint_array[MAX_SATS];
+float	az_array[24], el_array[24], long_array[24], lat_array[24],
+	footprint_array[24], range_array[24], altitude_array[24],
+	velocity_array[24], eclipse_depth_array[24], phase_array[24],
+	squint_array[24];
 
-double	doppler[MAX_SATS], nextevent[MAX_SATS];
+double	doppler[24], nextevent[24];
 
-long	aos_array[MAX_SATS], orbitnum_array[MAX_SATS];
+long	aos_array[24], orbitnum_array[24];
 
 unsigned short portbase=0;
 
@@ -1036,8 +1027,8 @@ void Deep(int ientry, tle_t * tle, deep_arg_t * deep_arg)
 	g533, gam, sinq, sinzf, sis, sl, sll, sls, stem, temp, temp1, x1,
 	x2, x2li, x2omi, x3, x4, x5, x6, x7, x8, xl, xldot, xmao, xnddt,
 	xndot, xno2, xnodce, xnoi, xomi, xpidot, z1, z11, z12, z13, z2,
-	z21, z22, z23, z3, z31, z32, z33, ze, zf, zm, zmo, zn, zsing,
-	zsinh, zsini, zcosg, zcosh, zcosi, delt=0, ft=0;
+	z21, z22, z23, z3, z31, z32, z33, ze, zf, zm, zn, zsing, zsinh,
+	zsini, zcosg, zcosh, zcosi, delt=0, ft=0;
 
 	switch (ientry)
 	{
@@ -1090,7 +1081,6 @@ void Deep(int ientry, tle_t * tle, deep_arg_t * deep_arg)
 		  cc=c1ss;
 		  zn=zns;
 		  ze=zes;
-		  zmo=zmos;
 		  xnoi=1/xnq;
 
 		  /* Loop breaks when Solar terms are done a second */
@@ -1191,7 +1181,6 @@ void Deep(int ientry, tle_t * tle, deep_arg_t * deep_arg)
 			zn=znl;
 			cc=c1l;
 			ze=zel;
-			zmo=zmol;
 			SetFlag(LUNAR_TERMS_DONE_FLAG);
 		}
 
@@ -2090,7 +2079,7 @@ char *predict_name;
 
 			/* Do a simple search for the matching satellite name */
 
-			for (i=0; i<MAX_SATS; i++)
+			for (i=0; i<24; i++)
 			{
 				if ((strncmp(satname,sat[i].name,25)==0) || (atol(satname)==sat[i].catnum))
 				{
@@ -2119,7 +2108,7 @@ char *predict_name;
 
 			/* Do a simple search for the matching satellite name */
 
-			for (i=0; i<MAX_SATS; i++)
+			for (i=0; i<24; i++)
 			{
 				if ((strncmp(satname,sat[i].name,25)==0) || (atol(satname)==sat[i].catnum))
 				{
@@ -2146,7 +2135,7 @@ char *predict_name;
 
 			/* Do a simple search for the matching satellite name */
 
-			for (i=0; i<MAX_SATS; i++)
+			for (i=0; i<24; i++)
 			{
 				if ((strncmp(satname,sat[i].name,25)==0) || (atol(satname)==sat[i].catnum))
 				{
@@ -2167,7 +2156,7 @@ char *predict_name;
 		{
 			buff[0]=0;
 
-			for (i=0; i<MAX_SATS; i++)
+			for (i=0; i<24; i++)
 			{
 				if (sat[i].name[0]!=0)
 					strcat(buff,sat[i].name);
@@ -2358,13 +2347,13 @@ void Banner()
 	mvprintw(3,18,"                                           ");
 	mvprintw(4,18,"         --== PREDICT  v%s ==--         ",version);
 	mvprintw(5,18,"   Released by John A. Magliacane, KD2BD   ");
-	mvprintw(6,18,"                  May 2006                 ");
+	mvprintw(6,18,"                  May 2018                 ");
 	mvprintw(7,18,"                                           ");
 }
 
 void AnyKey()
 {
-	mvprintw(23,MAX_SATS,"<< Press Any Key To Continue >>");
+	mvprintw(23,24,"<< Press Any Key To Continue >>");
 	refresh();
 	getch();
 }
@@ -2744,7 +2733,7 @@ char ReadDataFiles()
 
 	if (fd!=NULL)
 	{
-		while (x<MAX_SATS && feof(fd)==0)
+		while (x<24 && feof(fd)==0)
 		{
 			/* Initialize variables */
 
@@ -2814,7 +2803,7 @@ char ReadDataFiles()
 
 				/* Search for match */
 
-				for (y=0, match=0; y<MAX_SATS && match==0; y++)
+				for (y=0, match=0; y<24 && match==0; y++)
 				{
 					if (catnum==sat[y].catnum)
 						match=1;
@@ -2985,7 +2974,7 @@ void SaveTLE()
 
 	fd=fopen(tlefile,"w");
 
-	for (x=0; x<MAX_SATS; x++)
+	for (x=0; x<24; x++)
 	{
 		/* Convert numeric orbital data to ASCII TLE format */
 
@@ -3088,9 +3077,9 @@ char *string;
 					/* Scan for object number in datafile to see
 					   if this is something we're interested in */
 
-					for (i=0; (i<MAX_SATS && sat[i].catnum!=atol(SubString(line1,2,6))); i++);
+					for (i=0; (i<24 && sat[i].catnum!=atol(SubString(line1,2,6))); i++);
 
-					if (i!=MAX_SATS)
+					if (i!=24)
 					{
 						/* We found it!  Check to see if it's more
 						   recent than the data we already have. */
@@ -3175,10 +3164,10 @@ char *string;
 						mvprintw(19,21,"  Only 1 satellite was updated.");
 					else
 					{
-						if (savecount==MAX_SATS)
+						if (savecount==24)
 							mvprintw(19,21,"  All satellites were updated!");
 						else
-							mvprintw(19,21,"%3u out of MAX_SATS satellites were updated.",savecount);
+							mvprintw(19,21,"%3u out of 24 satellites were updated.",savecount);
 					}
 				}
 
@@ -3212,33 +3201,21 @@ int Select()
 	   corresponds to the satellite selected by the user.  An
 	   ESC or CR returns a -1. */
 
-	int x, y, key=0;
-        char firstchar = ' ';   /* ' ' to '~' gives 94 choices */
-        int last_sat = MAX_SATS;
-        int second_half;
+	int x, y, z, key=0;
 
 	clear();
 
 	bkgdset(COLOR_PAIR(2)|A_BOLD);
-	printw("\n\n\tSelect a Satellite by single character (upper, lower, symbol):\n\n");
+	printw("\n\n\t\t\t      Select a Satellite:\n\n");
 
 	attrset(COLOR_PAIR(3)|A_BOLD);
 
-        for (x=0; x < MAX_SATS; x++) {
-          if (! strlen(sat[x].name)) {
-            last_sat=x;
-            break;
-          }
-        }
-
-        second_half = (last_sat + 1)/2; /* rounding */
-        for (x=0; x < second_half; x++) {
-          printw("\n\t[%c]: %-25s", x+firstchar, Abbreviate(sat[x].name,25));
-          y = x + second_half;
-          if (strlen(sat[y].name)) {
-            printw("\t[%c]: %-25s", y+firstchar, Abbreviate(sat[y].name,25));
-          }
-        }
+	for (x=0, y=8, z=16; y<16; ++x, ++y, ++z)
+	{
+		printw("\n\t[%c]: %-15s", x+'A', Abbreviate(sat[x].name,15));
+		printw("\t[%c]: %-15s", y+'A', Abbreviate(sat[y].name,15));
+		printw("\t[%c]: %-15s\n", z+'A', Abbreviate(sat[z].name,15));
+	}
 
 	attrset(COLOR_PAIR(4)|A_BOLD);
 
@@ -3247,14 +3224,14 @@ int Select()
 
 	do
 	{
-		key=getch();
+		key=toupper(getch());
 
 		if (key==27 || key=='\n')
 			return -1;
 
-                } while (key<firstchar || key>(firstchar + MAX_SATS));
+	} while (key<'A' || key>'X');
 
-	return(key-firstchar);
+	return(key-'A');
 }
 
 long DayNum(m,d,y)
@@ -3286,11 +3263,12 @@ double CurrentDaynum()
 	/* Read the system clock and return the number
 	   of days since 31Dec79 00:00:00 UTC (daynum 0) */
 
-	int x;
+	/* int x; */
 	struct timeval tptr;
 	double usecs, seconds;
 
-	x=gettimeofday(&tptr,NULL);
+	/* x=gettimeofday(&tptr,NULL); */
+	(void)gettimeofday(&tptr,NULL);
 
 	usecs=0.000001*(double)tptr.tv_usec;
 	seconds=usecs+(double)tptr.tv_sec;
@@ -3486,8 +3464,8 @@ double daynum;
 	   http://www.geocities.com/s_perona/ingles/poslun.htm. */
 
 	double	jd, ss, t, t1, t2, t3, d, ff, l1, m, m1, ex, om, l,
-		b, w1, w2, bt, p, lm, h, ra, dec, z, ob, n, e, el,
-		az, teg, th, mm, dv;
+		b, w1, w2, bt, p, lm, h, ra, dec, z, ob, n, el, az,
+		teg, th, mm, dv;
 
 	jd=daynum+2444238.5;
 
@@ -3625,7 +3603,6 @@ double daynum;
 	/* dec = declination */
 
 	n=qth.stnlat*deg2rad;    /* North latitude of tracking station */
-	e=-qth.stnlong*deg2rad;  /* East longitude of tracking station */
 
 	/* Find siderial time in radians */
 
@@ -4024,7 +4001,7 @@ char *string, mode;
 	/* This function buffers and displays orbital predictions
 	   and allows screens to be saved to a disk file. */
 
-	char type[20], spaces[80], head1[70], head2[70],
+	char type[20], spaces[80], head1[160], head2[70],
 	     head3[72], satellite_name[25];
 	int key, ans=0, l, x, t;
 	static char buffer[1450], lines, quit;
@@ -4909,8 +4886,8 @@ char speak;
 	int	ans, oldaz=0, oldel=0, length, xponder=0,
 		polarity=0, tshift, bshift;
 	char	approaching=0, command[80], comsat, aos_alarm=0,
-		geostationary=0, aoshappens=0, decayed=0, eclipse_alarm=0,
-		visibility=0, old_visibility=0, los_alarm=0;
+		geostationary=0, aoshappens=0, decayed=0,
+		eclipse_alarm=0, visibility=0, old_visibility=0;
 	double	oldtime=0.0, nextaos=0.0, lostime=0.0, aoslos=0.0,
 		downlink=0.0, uplink=0.0, downlink_start=0.0,
 		downlink_end=0.0, uplink_start=0.0, uplink_end=0.0,
@@ -5192,7 +5169,6 @@ char speak;
 		{
 			lostime=0.0;
 			aos_alarm=0;
-			los_alarm=0;
 			eclipse_alarm=0;
 
 			if (comsat)
@@ -5437,10 +5413,10 @@ void MultiTrack()
 
 	int		x, y, z, ans;
 
-	unsigned char	satindex[MAX_SATS], inrange[MAX_SATS], sunstat=0, ok2predict[MAX_SATS];
+	unsigned char	satindex[24], inrange[24], sunstat=0, ok2predict[24];
 
-	double		aos[MAX_SATS], aos2[MAX_SATS], temptime,
-			nextcalctime=0.0, los[MAX_SATS], aoslos[MAX_SATS];
+	double		aos[24], aos2[24], temptime,
+			nextcalctime=0.0, los[24], aoslos[24];
 
 	if (xterm)
 		fprintf(stderr,"\033]0;PREDICT: Multi-Satellite Tracking Mode\007");
@@ -5449,16 +5425,16 @@ void MultiTrack()
 	attrset(COLOR_PAIR(6)|A_REVERSE|A_BOLD);
 	clear();
 
-	printw("                                                                                \n");
-	printw("                     PREDICT Real-Time Multi-Tracking Mode                      \n");
-	printw("                    Current Date/Time:                                          \n");
-	printw("                                                                                \n");
+	printw("                                                                                ");
+	printw("                     PREDICT Real-Time Multi-Tracking Mode                      ");
+	printw("                    Current Date/Time:                                          ");
+	printw("                                                                                ");
 
 	attrset(COLOR_PAIR(2)|A_REVERSE);
 
 	printw(" Satellite  Az   El %s  %s  Range  | Satellite  Az   El %s  %s  Range   ",(io_lat=='N'?"LatN":"LatS"),(io_lon=='W'?"LonW":"LonE"),(io_lat=='N'?"LatN":"LatS"),(io_lon=='W'?"LonW":"LonE"));
 
-	for (x=0; x<MAX_SATS; x++)
+	for (x=0; x<24; x++)
 	{
 		if (Geostationary(x)==0 && AosHappens(x)==1 && Decayed(x,0.0)!=1)
 			ok2predict[x]=1;
@@ -5473,7 +5449,7 @@ void MultiTrack()
 
 	do
 	{
-		for (z=0; z<MAX_SATS; z++)
+		for (z=0; z<24; z++)
 		{
 			y=z/2;
 
@@ -5547,20 +5523,20 @@ void MultiTrack()
 				}
 
 				attrset(COLOR_PAIR(4)|A_BOLD);
-				mvprintw(20+OFFSET,5,"   Sun   ");
-				mvprintw(21+OFFSET,5,"---------");
+				mvprintw(20,5,"   Sun   ");
+				mvprintw(21,5,"---------");
 				attrset(COLOR_PAIR(3)|A_BOLD);
-				mvprintw(22+OFFSET,5,"%-7.2fAz",sun_azi);
-				mvprintw(23+OFFSET,4,"%+-6.2f  El",sun_ele);
+				mvprintw(22,5,"%-7.2fAz",sun_azi);
+				mvprintw(23,4,"%+-6.2f  El",sun_ele);
 
 				FindMoon(daynum);
 
 				attrset(COLOR_PAIR(4)|A_BOLD);
-				mvprintw(20+OFFSET,65,"  Moon  ");
-				mvprintw(21+OFFSET,65,"---------");
+				mvprintw(20,65,"  Moon  ");
+				mvprintw(21,65,"---------");
 				attrset(COLOR_PAIR(3)|A_BOLD);
-				mvprintw(22+OFFSET,65,"%-7.2fAz",moon_az);
-				mvprintw(23+OFFSET,64,"%+-6.2f  El",moon_el);
+				mvprintw(22,65,"%-7.2fAz",moon_az);
+				mvprintw(23,64,"%+-6.2f  El",moon_el);
 
 				/* Calculate Next Event (AOS/LOS) Times */
 
@@ -5642,20 +5618,17 @@ void MultiTrack()
 					}
 
 			/* Display list of upcoming passes */
-                        /* Line 19 hardwired for 24 satellites, 2 cols of 12.
-                         * For 48, 2 cols of 24, we'd want 24 + 7 = 31.
-                         * So 19 becomes 31, offset of 12 (duh)
-                         */
+
 			attrset(COLOR_PAIR(4)|A_BOLD);
-			mvprintw(19 + OFFSET,31,"Upcoming Passes");
-			mvprintw(20 + OFFSET,31,"---------------");
+			mvprintw(19,31,"Upcoming Passes");
+			mvprintw(20,31,"---------------");
 			attrset(COLOR_PAIR(3)|A_BOLD);
 
 			for (x=0, y=0, z=-1; x<21 && y!=3; x++)
 			{
 				if (ok2predict[satindex[x]] && aos2[x]!=0.0)
 				{
-					mvprintw(y+21+OFFSET,19,"%10s on %s UTC",Abbreviate(sat[(int)satindex[x]].name,9),Daynum2String(aos2[x]));
+					mvprintw(y+21,19,"%10s on %s UTC",Abbreviate(sat[(int)satindex[x]].name,9),Daynum2String(aos2[x]));
 
 					if (z==-1)
 						z=x;
@@ -5692,7 +5665,7 @@ void Illumination()
 {
 	double startday, oneminute, sunpercent;
 	int eclipses, minutes, quit, breakout=0;
-	char string1[40], string[80], datestring[25], count;
+	char string1[365], string[725], datestring[25], count;
 
 	oneminute=1.0/(24.0*60.0);
 
@@ -5955,7 +5928,7 @@ char *string, *outputfile;
  
 	/* Do a simple search for the matching satellite name */
 
-	for (z=0; z<MAX_SATS; z++)
+	for (z=0; z<24; z++)
 	{
 		if ((strcmp(sat[z].name,satname)==0) || (atol(satname)==sat[z].catnum))
 		{
@@ -6043,6 +6016,7 @@ char *string, *outputfile;
 {
 	int x, y, z, lastel=0;
 	long start, now;
+	double doppler100=0.0;
 	char satname[50], startstr[20];
 	time_t t;
 	FILE *fd;
@@ -6070,7 +6044,7 @@ char *string, *outputfile;
 
 	/* Do a simple search for the matching satellite name */
 
-	for (z=0; z<MAX_SATS; z++)
+	for (z=0; z<24; z++)
 	{
 		if ((strcmp(sat[z].name,satname)==0) || (atol(satname)==sat[z].catnum))
 		{
@@ -6099,7 +6073,7 @@ char *string, *outputfile;
 
 					while (iel>=0)
 					{
-						fprintf(fd,"%.0f %s %4d %4d %4d %4d %4d %6ld %6ld %c\n",floor(86400.0*(3651.0+daynum)),Daynum2String(daynum),iel,iaz,ma256,isplat,isplong,irk,rv,findsun);
+						fprintf(fd,"%.0f %s %4d %4d %4d %4d %4d %6ld %6ld %c %f\n",floor(86400.0*(3651.0+daynum)),Daynum2String(daynum),iel,iaz,ma256,isplat,isplong,irk,rv,findsun,doppler100);
 						lastel=iel;
 						daynum+=cos((sat_ele-1.0)*deg2rad)*sqrt(sat_alt)/25000.0;
 						Calc();
@@ -6109,7 +6083,7 @@ char *string, *outputfile;
 					{
 						daynum=FindLOS();
 						Calc();
-						fprintf(fd,"%.0f %s %4d %4d %4d %4d %4d %6ld %6ld %c\n",floor(86400.0*(3651.0+daynum)),Daynum2String(daynum),iel,iaz,ma256,isplat,isplong,irk,rv,findsun);
+						fprintf(fd,"%.0f %s %4d %4d %4d %4d %4d %6ld %6ld %c %f\n",floor(86400.0*(3651.0+daynum)),Daynum2String(daynum),iel,iaz,ma256,isplat,isplong,irk,rv,findsun,doppler100);
 					}
 				}
 				break;
@@ -6123,12 +6097,105 @@ char *string, *outputfile;
 	return 0;
 }
 
+int QuickDoppler100(string, outputfile)
+char *string, *outputfile;
+{
+
+	/* Do a quick predict of the doppler for non-geo sattelites, returns UTC epoch seconds, 
+	   UTC time and doppler normalized to 100MHz for every 5 seconds of satellite-pass as a CSV*/
+
+	int x, y, z, lastel=0;
+	long start, now;
+	double doppler100;
+	char satname[50], startstr[20];
+	time_t t;
+	FILE *fd;
+
+	if (outputfile[0])
+		fd=fopen(outputfile,"w");
+	else
+		fd=stdout;
+
+	startstr[0]=0;
+
+	ReadDataFiles();
+
+	for (x=0; x<48 && string[x]!=0 && string[x]!='\n'; x++)
+		satname[x]=string[x];
+
+	satname[x]=0;
+	x++;
+
+	for (y=0; string[x+y]!=0 && string[x+y]!='\n'; y++)
+		startstr[y]=string[x+y];
+
+	startstr[y]=0;
+	y++;
+
+	/* Do a simple search for the matching satellite name */
+
+	for (z=0; z<24; z++)
+	{
+		if ((strcmp(sat[z].name,satname)==0) || (atol(satname)==sat[z].catnum))
+		{
+			start=atol(startstr);
+			indx=z;
+
+			t=time(NULL);
+			now=(long)t;
+
+			if (start==0)
+				start=now;
+
+			if ((start>=now-31557600) && (start<=now+31557600))
+			{
+				/* Start must within one year of now */
+				daynum=((start/86400.0)-3651.0);
+				PreCalc(indx);
+				Calc();
+
+				if (AosHappens(indx) && Geostationary(indx)==0 && Decayed(indx,daynum)==0)
+				{
+					/* Make Predictions */
+					daynum=FindAOS();
+
+					/* Display the pass */
+
+					while (iel>=0)
+					{
+						doppler100=-100.0e06*((sat_range_rate*1000.0)/299792458.0);
+						fprintf(fd,"%.0f,%s,%f\n",floor(86400.0*(3651.0+daynum)),Daynum2String(daynum),doppler100);
+						lastel=iel;
+						daynum+=cos((sat_ele-1.0)*deg2rad)*sqrt(sat_alt)/500000.0;
+						Calc();
+					}
+
+					if (lastel!=0)
+					{
+						doppler100=-100.0e06*((sat_range_rate*1000.0)/299792458.0);
+						daynum=FindLOS();
+						Calc();
+						fprintf(fd,"%.0f,%s,%f\n",floor(86400.0*(3651.0+daynum)),Daynum2String(daynum),doppler100);
+					}
+				}
+				break;
+			}
+		}
+	}
+
+	if (outputfile[0])
+		fclose(fd);
+
+	return 0;
+}
+
+
 int main(argc,argv)
 char argc, *argv[];
 {
 	int x, y, z, key=0;
 	char updatefile[80], quickfind=0, quickpredict=0,
-	     quickstring[40], outputfile[42],
+	     quickstring[40], outputfile[42], quickdoppler100=0,
 	     tle_cli[50], qth_cli[50], interactive=0;
 	struct termios oldtty, newtty;
 	pthread_t thread;
@@ -6143,7 +6210,6 @@ char argc, *argv[];
 	val['-']=1;
 
 	updatefile[0]=0;
-	quickstring[0]=0;
 	outputfile[0]=0;
 	temp[0]=0;
 	tle_cli[0]=0;
@@ -6156,6 +6222,9 @@ char argc, *argv[];
 	y=argc-1;
 	antfd=-1;
 
+	/* Make sure entire "quickstring" array is initialized before use */
+
+	for (x=0; x<40; quickstring[x]=0, x++);
 
 	/* Scan command-line arguments */
 
@@ -6194,6 +6263,23 @@ char argc, *argv[];
 			z--;
 		}
 
+		if (strcmp(argv[x],"-dp")==0)
+		{
+			quickdoppler100=1;
+			z=x+1;
+
+			while (z<=y && argv[z][0] && argv[z][0]!='-')
+			{
+				if ((strlen(quickstring)+strlen(argv[z]))<37)
+				{
+					strncat(quickstring,argv[z],15);
+					strcat(quickstring,"\n");
+					z++;
+				}
+			}
+			z--;
+		}
+
 		if (strcmp(argv[x],"-u")==0)
 		{
 			z=x+1;
@@ -6208,6 +6294,7 @@ char argc, *argv[];
 			}
 			z--;	
 		}
+
 
 		if (strcmp(argv[x],"-t")==0)
 		{
@@ -6279,17 +6366,19 @@ char argc, *argv[];
 	if (qth_cli[0]==0)
 		sprintf(qthfile,"%s/.predict/predict.qth",env);
 	else
-		sprintf(qthfile,"%s%c",qth_cli,0);
+		/* sprintf(qthfile,"%s%c",qth_cli,0); */
+		sprintf(qthfile,"%s",qth_cli);
 
 	if (tle_cli[0]==0)
 		sprintf(tlefile,"%s/.predict/predict.tle",env);
 	else
-		sprintf(tlefile,"%s%c",tle_cli,0);
+		/* sprintf(tlefile,"%s%c",tle_cli,0); */
+		sprintf(tlefile,"%s",tle_cli);
 
 	/* Test for interactive/non-interactive mode of operation
 	   based on command-line arguments given to PREDICT. */
 
-	if (updatefile[0] || quickfind || quickpredict)
+	if (updatefile[0] || quickfind || quickpredict || quickdoppler100)
 		interactive=0;
 	else
 		interactive=1;
@@ -6356,6 +6445,9 @@ char argc, *argv[];
 
 		if (quickpredict)  /* -p was passed to PREDICT */
 			exit(QuickPredict(quickstring,outputfile));
+
+		if (quickdoppler100)  /* -dp was passed to PREDICT */
+			exit(QuickDoppler100(quickstring,outputfile));
 	}
 
 	else
