@@ -5108,6 +5108,8 @@ char speak;
           mvprintw(14, 67, "              ");
       }
 
+
+#if 0
       if (speak == 'T' && soundcard) {
         if (eclipse_alarm == 0 && fabs(eclipse_depth) < 0.015) /* ~1 deg */
         {
@@ -5156,6 +5158,7 @@ char speak;
           oldtime = CurrentDaynum();
         }
       }
+#endif
     }
 
     else {
@@ -5253,12 +5256,14 @@ char speak;
       mvprintw(22, 22, "Next AOS: %s UTC", Daynum2String(nextaos));
       aoslos = nextaos;
 
+#if 0
       if (oldtime != 0.0 && speak == 'T' && soundcard) {
         /* Announce LOS */
 
         sprintf(command, "%svocalizer/vocalizer los &", predictpath);
         system(command);
       }
+#endif
     }
 
     /* This is where the variables for the socket server are updated. */
@@ -5796,9 +5801,11 @@ void ProgramInfo() {
 
   printw("\t\tVocalizer       : ");
 
+#if 0
   if (soundcard)
     printw("Soundcard present");
   else
+#endif
     printw("No soundcard available");
 
   refresh();

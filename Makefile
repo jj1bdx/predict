@@ -7,7 +7,7 @@ default: predict
 
 predict.h:
 	echo "char *predictpath = {\"`pwd`\"};" > predict.h
-	echo "char soundcard = 0;" >> predict.h
+	echo "// char soundcard = 0;" >> predict.h
 	echo "char *version = {\"`cat .version`\"};" >> predict.h
 
 predict: predict.c predict.h
