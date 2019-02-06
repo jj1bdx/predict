@@ -10,11 +10,8 @@ predict.h:
 	echo "char soundcard = 0;" >> predict.h
 	echo "char *version = {\"`cat .version`\"};" >> predict.h
 
-
 predict: predict.c predict.h
-	cc -O3 -Wall -fomit-frame-pointer -lm -lncurses -pthread predict.c -o predict
-
-
+	cc -O3 -Wall -fomit-frame-pointer predict.c -o predict -L/usr/lib -L/usr/local/lib -lm -lncurses -lpthread
 
 # There's a 'clean' script that I don't know enough about yet
 clean:
