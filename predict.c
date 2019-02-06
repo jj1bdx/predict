@@ -3993,6 +3993,27 @@ double NextAOS() {
   return (FindAOS());
 }
 
+// Convert longitude value range
+// from: [0, 180)[180, 360)
+// to: [0, 180)[-180, 0)
+// The integer and double functions are necessary.
+
+int IntLonDisp(int x) {
+  if (x >= 180) {
+    return x - 360;
+  } else {
+    return x;
+  }
+}
+
+double DoubleLonDisp(double x) {
+  if (x >= 180.0) {
+    return x - 360.0;
+  } else {
+    return x;
+  }
+}
+
 int Print(string, mode) char *string, mode;
 {
   /* This function buffers and displays orbital predictions
@@ -4276,14 +4297,15 @@ void Predict(mode) char mode;
           sprintf(string, "      %s%4d %4d  %4d  %4d   %4d   %6ld  %4.0f %c\n",
                   Daynum2String(daynum), iel, iaz, ma256,
                   (io_lat == 'N' ? +1 : -1) * isplat,
-                  (io_lon == 'W' ? isplong : 360 - isplong), irk, squint,
-                  findsun);
+                  IntLonDisp(io_lon == 'W' ? isplong : 360 - isplong),
+		  irk, squint, findsun);
 
         else
           sprintf(string, "      %s%4d %4d  %4d  %4d   %4d   %6ld  %6ld %c\n",
                   Daynum2String(daynum), iel, iaz, ma256,
                   (io_lat == 'N' ? +1 : -1) * isplat,
-                  (io_lon == 'W' ? isplong : 360 - isplong), irk, rv, findsun);
+                  IntLonDisp(io_lon == 'W' ? isplong : 360 - isplong),
+		  irk, rv, findsun);
 
         lastel = iel;
 
@@ -4319,14 +4341,15 @@ void Predict(mode) char mode;
           sprintf(string, "      %s%4d %4d  %4d  %4d   %4d   %6ld  %4.0f %c\n",
                   Daynum2String(daynum), iel, iaz, ma256,
                   (io_lat == 'N' ? +1 : -1) * isplat,
-                  (io_lon == 'W' ? isplong : 360 - isplong), irk, squint,
-                  findsun);
+                  IntLonDisp(io_lon == 'W' ? isplong : 360 - isplong),
+		  irk, squint, findsun);
 
         else
           sprintf(string, "      %s%4d %4d  %4d  %4d   %4d   %6ld  %6ld %c\n",
                   Daynum2String(daynum), iel, iaz, ma256,
                   (io_lat == 'N' ? +1 : -1) * isplat,
-                  (io_lon == 'W' ? isplong : 360 - isplong), irk, rv, findsun);
+                  IntLonDisp(io_lon == 'W' ? isplong : 360 - isplong),
+		  irk, rv, findsun);
 
         if (mode == 'p')
           quit = Print(string, 'p');
@@ -5001,7 +5024,7 @@ char speak;
     mvprintw(8 + tshift, 68, "%-5.0f", sat_range);
 
     mvprintw(8 + tshift, 1, "%-7.2f",
-             (io_lon == 'W' ? 360.0 - sat_lon : sat_lon));
+             DoubleLonDisp(io_lon == 'W' ? 360.0 - sat_lon : sat_lon));
     mvprintw(7 + tshift, 15, "%-7.2f", sat_azi);
     mvprintw(8 + tshift, 14, "%+-6.2f", sat_ele);
     mvprintw(7 + tshift, 29, "%0.f ", (3600.0 * sat_vel) * km2mi);
@@ -5473,11 +5496,11 @@ void MultiTrack() {
         else
           sunstat = 'N';
 
-        mvprintw(y + 6, x, "%-10s%3.0f  %+3.0f  %3.0f   %3.0f %6.0f %c",
+        mvprintw(y + 6, x, "%-10s%3.0f  %+3.0f  %3.0f  %4.0f %6.0f %c",
                  Abbreviate(sat[indx].name, 9), sat_azi, sat_ele,
                  (io_lat == 'N' ? +1 : -1) * sat_lat,
-                 (io_lon == 'W' ? 360.0 - sat_lon : sat_lon), sat_range,
-                 sunstat);
+                 DoubleLonDisp(io_lon == 'W' ? 360.0 - sat_lon : sat_lon),
+		 sat_range, sunstat);
 
         if (socket_flag) {
           az_array[indx] = sat_azi;
