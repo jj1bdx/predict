@@ -2,7 +2,8 @@
 
 PREDICT is an open-source, multi-user satellite tracking and orbital prediction program by John A. Magliacane, KD2BD.
 
-This repository contains a simplified fork originally by @koansys. All additioncal clients and utilities are removed.
+This repository contains a simplified fork originally by [@koansys](https://github.com/koansys/). All additioncal clients and utilities are removed. *The original color scheme is corrected so that the program can be run normally on a solarized iTerm.* :)
+
 
 * [Project web page](https://www.qsl.net/kd2bd/predict.html)
 * [Project GitHub page](https://github.com/kd2bd/predict/)
@@ -10,7 +11,9 @@ This repository contains a simplified fork originally by @koansys. All additionc
 
 ## Compilation
 
-./make
+```shell
+make clean && make
+```
 
 ## First time use
 
