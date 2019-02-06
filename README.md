@@ -16,21 +16,25 @@ This repository contains a simplified fork originally by @koansys. All additionc
 
 First time users will be asked to enter their groundstation latitude and
 longitude in decimal degrees or in degree, minute, second (DMS) format.
+
 Normally, PREDICT handles longitudes in decimal degrees WEST (0-360
 degrees), and latitudes in decimal degrees NORTH.  This behavior can be
 modified by passing the -east or -south command line switches to PREDICT
-when it is invoked. our station's altitude in meters above mean sea
+when it is invoked.
+
+Our station's altitude in meters above mean sea
 level, a recent set of Keplerian orbital data for the satellites of
 interest, and an accurately set system clock are also required if
-successful real-time satellite tracking is also desired.  Sources
-for such data include http://www.celestrak.com/,
+successful real-time satellite tracking is also desired. 
+
+Sources for such Keplerian data include http://www.celestrak.com/,
 http://www.space-track.org, and http://www.amsat.org/.
 
 ## Acknowledgments
 
-@kd2bd
-@koansys
+* [@kd2bd](https://github.com/kd2bd/)
+* [@koansys](https://github.com/koansys/)
 
 ## License
 
-GPLv2 (see [LICENSE}(./LICENSE))
+GPLv2 (see [LICENSE](./LICENSE))
