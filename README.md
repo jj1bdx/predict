@@ -6,7 +6,7 @@ This repository contains a simplified fork originally by [@koansys](https://gith
 
 * All additioncal clients and utilities are removed.
 * *The original color scheme is corrected so that the program can be run normally on a solarized iTerm.* :)
-* longitude range is changed from 0~360 degrees to -180~180 degrees. (Negative degrees specify the other semisphere.)
+* longitude range is changed from `0~360` degrees to `-180~180` degrees. (Negative degrees specify the other semisphere.)
 
 ## Reference web links
 
