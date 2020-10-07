@@ -1,0 +1,61 @@
+NOAA-18
+28654
+No alat, alon
+APT Downlink
+0.0, 0.0
+137.9125, 137.9125
+No weekly schedule
+No orbital schedule
+HRPT Downlink
+0.0, 0.0
+1707.0, 1707.0
+No weekly schedule
+No orbital schedule
+end
+NOAA-15
+25338
+No alat, alon
+APT Downlink
+0.0, 0.0
+137.500, 137.500
+No weekly schedule
+No orbital schedule
+HRPT Downlink
+0.0, 0.0
+1702.5, 1702.5
+No weekly schedule
+No orbital schedule
+end
+NOAA-19
+33591
+No alat, alon
+APT Downlink
+0.0, 0.0
+137.100, 137.100
+No weekly schedule
+No orbital schedule
+HRPT Downlink
+0.0, 0.0
+1698.0, 1698.0
+No weekly schedule
+No orbital schedule
+end
+ISS
+25544
+No alat, alon
+ARISS packet
+145.825, 145.825
+145.825, 145.825
+No weekly schedule
+No orbital schedule
+ARISS FM SSTV
+0.0, 0.0
+145.800, 145.800
+No weekly schedule
+No orbital schedule
+Crossband Repeater (FM Tone 67.0Hz)
+437.800, 437.800
+145.990, 145.990
+No weekly schedule
+No orbital schedule
+end
