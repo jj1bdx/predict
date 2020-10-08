@@ -1,17 +1,22 @@
 %!PS-Adobe-3.0
-%%Creator: groff version 1.17.2
-%%CreationDate: Mon May 15 13:11:24 2006
+%%Creator: groff version 1.22.2
+%%CreationDate: Fri May  4 13:56:00 2018
 %%DocumentNeededResources: font Times-Roman
 %%+ font Times-Bold
 %%+ font Times-Italic
 %%+ font Courier
-%%DocumentSuppliedResources: procset grops 1.17 2
-%%Pages: 10
+%%DocumentSuppliedResources: procset grops 1.22 2
+%%Pages: 11
 %%PageOrder: Ascend
+%%DocumentMedia: Default 595 842 0 () ()
 %%Orientation: Portrait
 %%EndComments
+%%BeginDefaults
+%%PageMedia: Default
+%%EndDefaults
 %%BeginProlog
-%%BeginResource: procset grops 1.17 2
+%%BeginResource: procset grops 1.22 2
+%!PS-Adobe-3.0 Resource-ProcSet
 /setpacking where{
 pop
 currentpacking
@@ -68,6 +73,7 @@ exch pop add exch pop
 /level0 save def
 1 setlinecap
 1 setlinejoin
+DEFS/BPhook known{DEFS begin BPhook end}if
 72 RES div dup scale
 LS{
 90 rotate
@@ -79,7 +85,7 @@ LS{
 /EP{
 level0 restore
 showpage
-}bind def
+}def
 /DA{
 newpath arcn stroke
 }bind def
@@ -109,16 +115,34 @@ TM setmatrix
 /ST/stroke load def
 /MT/moveto load def
 /CL/closepath load def
-/FL{
-currentgray exch setgray fill setgray
+/Fr{
+setrgbcolor fill
 }bind def
-/BL/fill load def
+/setcmykcolor where{
+pop
+/Fk{
+setcmykcolor fill
+}bind def
+}if
+/Fg{
+setgray fill
+}bind def
+/FL/fill load def
 /LW/setlinewidth load def
+/Cr/setrgbcolor load def
+/setcmykcolor where{
+pop
+/Ck/setcmykcolor load def
+}if
+/Cg/setgray load def
 /RE{
 findfont
 dup maxlength 1 index/FontName known not{1 add}if dict begin
 {
-1 index/FID ne{def}{pop pop}ifelse
+1 index/FID ne
+2 index/UniqueID ne
+and
+{def}{pop pop}ifelse
 }forall
 /Encoding exch def
 dup/FontName exch def
@@ -155,9 +179,11 @@ newpath
 /CNT countdictstack def
 userdict begin
 /showpage{}def
+/setpagedevice{}def
+mark
 }bind def
 /PEND{
-clear
+cleartomark
 countdictstack CNT sub{end}repeat
 level1 restore
 }bind def
@@ -167,16 +193,21 @@ pop
 setpacking
 }if
 %%EndResource
+%%EndProlog
+%%BeginSetup
+%%BeginFeature: *PageSize Default
+<< /PageSize [ 595 842 ] /ImagingBBox null >> setpagedevice
+%%EndFeature
 %%IncludeResource: font Times-Roman
 %%IncludeResource: font Times-Bold
 %%IncludeResource: font Times-Italic
 %%IncludeResource: font Courier
 grops begin/DEFS 1 dict def DEFS begin/u{.001 mul}bind def end/RES 72
-def/PL 792 def/LS false def/ENC0[/asciicircum/asciitilde/Scaron/Zcaron
-/scaron/zcaron/Ydieresis/trademark/quotesingle/.notdef/.notdef/.notdef
+def/PL 841.89 def/LS false def/ENC0[/asciicircum/asciitilde/Scaron
+/Zcaron/scaron/zcaron/Ydieresis/trademark/quotesingle/Euro/.notdef
 /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
 /.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
-/.notdef/.notdef/space/exclam/quotedbl/numbersign/dollar/percent
+/.notdef/.notdef/.notdef/space/exclam/quotedbl/numbersign/dollar/percent
 /ampersand/quoteright/parenleft/parenright/asterisk/plus/comma/hyphen
 /period/slash/zero/one/two/three/four/five/six/seven/eight/nine/colon
 /semicolon/less/equal/greater/question/at/A/B/C/D/E/F/G/H/I/J/K/L/M/N/O
@@ -201,7 +232,7 @@ def/PL 792 def/LS false def/ENC0[/asciicircum/asciitilde/Scaron/Zcaron
 /ugrave/uacute/ucircumflex/udieresis/yacute/thorn/ydieresis]def
 /Courier@0 ENC0/Courier RE/Times-Italic@0 ENC0/Times-Italic RE
 /Times-Bold@0 ENC0/Times-Bold RE/Times-Roman@0 ENC0/Times-Roman RE
-%%EndProlog
+%%EndSetup
 %%Page: 1 1
 %%BeginPageSetup
 BP
@@ -215,11 +246,12 @@ SF(tle_update_sour)3.01 E(ce)-.37 E F0 3.01(][)C(-t)-3.01 E F2
 (tle\214le)3.009 E F0 3.009(][)C(-q)-3.009 E F2(qth\214le)3.009 E F0
 3.009(][)C(-a)-3.009 E F2(serial_port)3.009 E F0 3.009(][)C(-a1)-3.009 E
 F2(serial_port)3.009 E F0 3.009(][)C(-n)-3.009 E F2(network_port)3.009 E
-F0 3.009(][)C(-f)-3.009 E F2 .134
-(sat_name starting_date/time ending_date/time)108 148.8 R F0 2.634(][)C
-(-p)-2.634 E F2 .134(sat_name starting_date/time)2.634 F F0 2.635(][)C
-(-o)-2.635 E F2(output_\214le)2.635 E F0 2.635(][)C .135(-s] [-east])
--2.635 F([-west] [-north] [-south])108 160.8 Q F1(DESCRIPTION)72 189.6 Q
+F0 3.009(][)C(-f)-3.009 E F2 2.471
+(sat_name starting_date/time ending_date/time)108 148.8 R F0 4.971(][)C
+(-dp)-4.971 E F2 2.472(sat_name starting_date/time ending_date/time)
+4.971 F F0 4.972(][)C(-p)-4.972 E F2(sat_name starting_date/time)108
+160.8 Q F0 2.5(][)C(-o)-2.5 E F2(output_\214le)2.5 E F0 2.5(][)C
+(-s] [-east] [-west] [-north] [-south])-2.5 E F1(DESCRIPTION)72 189.6 Q
 /F3 10/Times-Bold@0 SF(PREDICT)108 201.6 Q F0 .385(is a multi-user sate\
 llite tracking and orbital prediction program written under the Linux o\
 perat-)2.885 F 1.323(ing system by John A. Magliacane, KD2BD.)108 213.6
@@ -302,8 +334,8 @@ F .192(eplerian element)-.25 F .139
 -.15 F .914(of a ground station. The)108 696 R 3.414(yc)-.15 G .914
 (an also be used to look back to pre)-3.414 F .914
 (vious passes to help to con\214rm or identify)-.25 F(past observ)108
-708 Q(ations.)-.25 E(KD2BD Softw)72 768 Q 133.005(are 15)-.1 F(May 2006)
-2.5 E(1)202.335 E EP
+708 Q(ations.)-.25 E(KD2BD Softw)72 768 Q 133.005(are 05)-.1 F(May 2018)
+2.5 E(1)202.335 E 0 Cg EP
 %%Page: 2 2
 %%BeginPageSetup
 BP
@@ -412,7 +444,7 @@ F0 .466(Single Satellite T)2.966 F .467(racking Mode \(main menu option)
 724.8 R 2.678(sM)-.55 G .178(ulti-Satellite T)-2.678 F .178
 (racking Mode \(main menu option)-.35 F F1([M])2.677 E F0 2.677(\). The)
 B .177(positions of the Sun and Moon)2.677 F(KD2BD Softw)72 768 Q
-133.005(are 15)-.1 F(May 2006)2.5 E(2)202.335 E EP
+133.005(are 05)-.1 F(May 2018)2.5 E(2)202.335 E 0 Cg EP
 %%Page: 3 3
 %%BeginPageSetup
 BP
@@ -520,7 +552,7 @@ are made. Alarms and special)108 648 R .638
 4.418 F .967(mode. In this mode, all 24 satellites in the program')108
 724.8 R 3.468(sd)-.55 G .968(atabase are track)-3.468 F .968
 (ed simultaneously along with the)-.1 F(KD2BD Softw)72 768 Q 133.005
-(are 15)-.1 F(May 2006)2.5 E(3)202.335 E EP
+(are 05)-.1 F(May 2018)2.5 E(3)202.335 E 0 Cg EP
 %%Page: 4 4
 %%BeginPageSetup
 BP
@@ -637,7 +669,8 @@ R(ault,)-.1 E F1(PREDICT)4.532 E F0 2.032(reads ground station location\
 (located in the user')108 727.2 R 3.428(sh)-.55 G .928
 (ome directory under a hidden subdirectory named)-3.428 F F3(.pr)3.428 E
 (edict)-.37 E F0 3.428(.G)C .927(round station location)-3.428 F
-(KD2BD Softw)72 768 Q 133.005(are 15)-.1 F(May 2006)2.5 E(4)202.335 E EP
+(KD2BD Softw)72 768 Q 133.005(are 05)-.1 F(May 2018)2.5 E(4)202.335 E 0
+Cg EP
 %%Page: 5 5
 %%BeginPageSetup
 BP
@@ -668,12 +701,12 @@ o)2.5 E(wing manner:)-.25 E F1(pr)144 180 Q(edict -t visual.tle -q beac)
 F1(pr)A(edict -t /home/kd2bd/orbs/visual.tle)-.37 E F0(\).)A(It is also\
  possible to specify only one alternate \214le while using the def)108
 288 Q(ault for the other)-.1 E 2.5(.F)-.55 G(or e)-2.65 E(xample,)-.15 E
-F1(pr)144 312 Q(edict -t visual.tle)-.37 E F0 3.597
-(reads QTH information from the def)108 336 R(ault)-.1 E F1(~/.pr)6.096
-E(edict/pr)-.37 E(edict.qth)-.37 E F0 3.596
-(location, and TLE information from)6.096 F F1(visual.tle)108 348 Q F0
-2.5(,w)C(hile)-2.5 E F1(pr)144 372 Q(edict -q bobs.qth)-.37 E F0
-(reads QTH information from)108 396 Q F1(bobs.qth)2.5 E F0
+F1(pr)144 312 Q(edict -t visual.tle)-.37 E F0 1.885
+(reads QTH information from the def)108 336 R(ault)-.1 E F1(~/.pr)4.385
+E(edict/pr)-.37 E(edict.qth)-.37 E F0 1.885
+(location, and TLE information from)4.385 F F1(vis-)4.385 E(ual.tle)108
+348 Q F0 2.5(,w)C(hile)-2.5 E F1(pr)144 372 Q(edict -q bobs.qth)-.37 E
+F0(reads QTH information from)108 396 Q F1(bobs.qth)2.5 E F0
 (and TLE information from the def)2.5 E(ault)-.1 E F1(~/.pr)2.5 E
 (edict/pr)-.37 E(edict.tle)-.37 E F0(location.)2.5 E/F3 10.95
 /Times-Bold@0 SF -.11(QU)72 424.8 S(IET ORBIT).11 E(AL D)-.986 E -1.644
@@ -699,20 +732,20 @@ F0(.)A F2(PREDICT)2.5 E F0
 .593(If an alternate data\214le requires updating, it may also be speci\
 \214ed on the command line using the)108 580.8 R F1(-t)3.093 E F0
 (switch)3.093 E(as follo)108 592.8 Q(ws:)-.25 E F1(pr)144 616.8 Q
-(edict -t oscar)-.37 E(.tle -u amateur)-1.11 E(.tle)-1.11 E F0 .225
-(This e)108 640.8 R .225(xample updates the)-.15 F F1(oscar)2.725 E
-(.tle)-1.11 E F0 .224(orbital database with the tw)2.724 F .224
-(o-line element data contained in)-.1 F F1(amateur)2.724 E(.tle)-1.11 E
-F0(.)A 1.143(These options permit the automatic update of)108 664.8 R F2
-(PREDICT')3.643 E(s)-.37 E F0 1.143(orbital data \214les using K)3.643 F
-1.143(eplerian orbital data)-.25 F
+(edict -t oscar)-.37 E(.tle -u amateur)-1.11 E(.tle)-1.11 E F0(This e)
+108 640.8 Q(xample updates the)-.15 E F1(oscar)2.5 E(.tle)-1.11 E F0
+(orbital database with the tw)2.5 E(o-line element data contained in)-.1
+E F1(amateur)2.5 E(.tle)-1.11 E F0(.)A 1.143
+(These options permit the automatic update of)108 664.8 R F2(PREDICT')
+3.643 E(s)-.37 E F0 1.143(orbital data \214les using K)3.643 F 1.142
+(eplerian orbital data)-.25 F
 (obtained through automatic means such as FTP)108 676.8 Q 2.5(,H)-1.11 G
 (TTP)-2.5 E 2.5(,o)-1.11 G 2.5(rp)-2.5 G(acsat satellite do)-2.5 E
 (wnload.)-.25 E -.15(Fo)108 700.8 S 2.5(re).15 G(xample, the follo)-2.65
 E(wing script can be used to update)-.25 E F2(PREDICT')2.5 E(s)-.37 E F0
 (orbital database via the Internet:)2.5 E/F4 10/Courier@0 SF(#!/bin/sh)
-126 724.8 Q F0(KD2BD Softw)72 768 Q 133.005(are 15)-.1 F(May 2006)2.5 E
-(5)202.335 E EP
+115.5 724.8 Q F0(KD2BD Softw)72 768 Q 133.005(are 05)-.1 F(May 2018)2.5
+E(5)202.335 E 0 Cg EP
 %%Page: 6 6
 %%BeginPageSetup
 BP
@@ -728,18 +761,18 @@ BP
 126 120 Q F0 1.965 -.8(To t)108 144 T .365
 (ruly automate the process of updating your orbital database, sa).8 F
 .665 -.15(ve t)-.2 H .365(he abo).15 F .665 -.15(ve c)-.15 H .365
-(ommands to a \214le in your).15 F .051(home directory \(such as)108 156
-R/F2 10/Times-Italic@0 SF -.1(ke)2.551 G(pupdate).1 E F0 .051
+(ommands to a \214le in your).15 F .052(home directory \(such as)108 156
+R/F2 10/Times-Italic@0 SF -.1(ke)2.552 G(pupdate).1 E F0 .052
 (\), and add the follo)B .052(wing line to your crontab \(type)-.25 F F2
-(cr)2.552 E .052(ontab -e)-.45 F F0 .052(to edit your)2.552 F
+(cr)2.551 E .051(ontab -e)-.45 F F0 .051(to edit your)2.551 F
 (crontab\):)108 168 Q F2 2.5(02***k)144 192 S(epupdate)-2.6 E F0(and)108
 216 Q/F3 10/Times-Bold@0 SF(PREDICT)2.5 E F0
 (will automatically update its database e)2.5 E -.15(ve)-.25 G
 (ry day at 2:00 AM.).15 E/F4 10.95/Times-Bold@0 SF -.548(AU)72 244.8 S
 -.197(TO).548 G(MA).197 E(TIC ANTENN)-1.04 E 2.738(AT)-.219 G(RA)-2.738
-E(CKING)-.602 E F3(PREDICT)108 256.8 Q F0 .432
-(is compatible with serial port antenna rotator interf)2.932 F .431
-(aces conforming to the EasyComm 2 proto-)-.1 F 3.709(col standard.)108
+E(CKING)-.602 E F3(PREDICT)108 256.8 Q F0 .431
+(is compatible with serial port antenna rotator interf)2.931 F .432
+(aces conforming to the EasyComm 2 proto-)-.1 F 3.71(col standard.)108
 268.8 R 3.709(This includes the PIC/TRA)8.709 F 3.709(CK interf)-.4 F
 3.709(ace de)-.1 F -.15(ve)-.25 G 3.709(loped by V).15 F 3.709
 (icenzo Mezzalira, IW3FOL)-.6 F(<http://digilander)108 280.8 Q 2.33
@@ -748,53 +781,53 @@ E(CKING)-.602 E F3(PREDICT)108 256.8 Q F0 .432
 (currently under de)-7.33 F -.15(ve)-.25 G 2.33(lopment\), and).15 F
 9.054(Suding Associates Incorporated')108 292.8 R 11.554(sD)-.55 G 9.054
 (ish Controllers <http://www)-11.554 F(.ultimatechar)-.65 E(ger)-.18 E
-(.com/Dish_Con-)-.55 E 3.252(trollers.html>. The)108 304.8 R(FODTRA)
-3.252 E .752(CK rotator interf)-.4 F .752
+(.com/Dish_Con-)-.55 E 3.251(trollers.html>. The)108 304.8 R(FODTRA)
+3.251 E .751(CK rotator interf)-.4 F .752
 (ace is supported through the use of Luc Langehe)-.1 F(germann')-.15 E
 (s)-.55 E(\(LX1GT\))108 316.8 Q F3 -.25(fo)2.5 G(dtrack).25 E F0
 (utility written for and included with)2.5 E F3(PREDICT)2.5 E F0(.)A
-2.408(Using an)108 340.8 R 4.908(yo)-.15 G 4.908(ft)-4.908 G 2.408
-(hese hardw)-4.908 F 2.408(are interf)-.1 F(aces,)-.1 E F3(PREDICT)4.908
-E F0 2.409(can automatically control the position of AZ/EL)4.908 F .765
+2.409(Using an)108 340.8 R 4.909(yo)-.15 G 4.909(ft)-4.909 G 2.409
+(hese hardw)-4.909 F 2.409(are interf)-.1 F(aces,)-.1 E F3(PREDICT)4.909
+E F0 2.408(can automatically control the position of AZ/EL)4.908 F .764
 (antenna rotators, and k)108 352.8 R .764
 (eep antennas accurately pointed to)-.1 F -.1(wa)-.25 G .764
-(rd a satellite being track).1 F .764(ed by)-.1 F F3(PREDICT)3.264 E F0
-5.764(.I)C(n)-5.764 E .562(operation, tracking data from)108 364.8 R F3
-(PREDICT)3.062 E F0 .563
-(is directed to the speci\214ed serial port using the)3.062 F F2(-a)
-3.063 E F0 .563(command line)3.063 F 2.5(option. F)108 376.8 R(or e)-.15
+(rd a satellite being track).1 F .765(ed by)-.1 F F3(PREDICT)3.265 E F0
+5.765(.I)C(n)-5.765 E .563(operation, tracking data from)108 364.8 R F3
+(PREDICT)3.063 E F0 .562
+(is directed to the speci\214ed serial port using the)3.063 F F2(-a)
+3.062 E F0 .562(command line)3.062 F 2.5(option. F)108 376.8 R(or e)-.15
 E(xample:)-.15 E F2(pr)144 400.8 Q(edict -a /de)-.37 E(v/ttyS0)-.15 E F0
 .59(will send AZ/EL tracking data to the \214rst serial port when the p\
-rogram is tracking a satellite in the Single)108 424.8 R .425
-(Satellite T)108 436.8 R .425(racking Mode.)-.35 F .425
-(The data sent to the serial port is of the form:)5.425 F F2 .426
-(AZ241.0 EL26.0)2.926 F F0 .426(using 9600 baud,)2.926 F .996
-(8-data bits, 1-stop bit, no parity)108 448.8 R 3.496(,a)-.65 G .996
-(nd no handshaking.)-3.496 F .996(Data is sent to the interf)5.996 F
-.995(ace if the azimuth or ele-)-.1 F -.25(va)108 460.8 S .238
-(tion headings change by one de).25 F .239(gree or more.)-.15 F -.15(Fo)
-5.239 G 2.739(ri).15 G(nterf)-2.739 E .239(aces requiring k)-.1 F
-(eepali)-.1 E .539 -.15(ve u)-.25 H .239(pdates at least once per).15 F
-.275(second whether the AZ/EL headings ha)108 472.8 R .574 -.15(ve c)-.2
-H .274(hanged or not \(such as the ones by SAI\), the).15 F F2(-a1)2.774
-E F0 .274(option may be)2.774 F(used:)108 484.8 Q F2(pr)144 508.8 Q
-(edict -a1 /de)-.37 E(v/ttyS0)-.15 E F4(ADDITION)72 537.6 Q(AL OPTIONS)
+rogram is tracking a satellite in the Single)108 424.8 R .426
+(Satellite T)108 436.8 R .426(racking Mode.)-.35 F .426
+(The data sent to the serial port is of the form:)5.426 F F2 .425
+(AZ241.0 EL26.0)2.925 F F0 .425(using 9600 baud,)2.925 F .525
+(8-data bits, 1-stop bit, no parity)108 448.8 R 3.025(,a)-.65 G .525
+(nd no handshaking.)-3.025 F .525(Data is sent to the interf)5.525 F
+.526(ace if the azimuth or ele)-.1 F -.25(va)-.25 G(-).25 E .813
+(tion headings change by one de)108 460.8 R .813(gree or more.)-.15 F
+-.15(Fo)5.813 G 3.313(ri).15 G(nterf)-3.313 E .813(aces requiring k)-.1
+F(eepali)-.1 E 1.113 -.15(ve u)-.25 H .813(pdates at least once per).15
+F .274(second whether the AZ/EL headings ha)108 472.8 R .574 -.15(ve c)
+-.2 H .274(hanged or not \(such as the ones by SAI\), the).15 F F2(-a1)
+2.775 E F0 .275(option may be)2.775 F(used:)108 484.8 Q F2(pr)144 508.8
+Q(edict -a1 /de)-.37 E(v/ttyS0)-.15 E F4(ADDITION)72 537.6 Q(AL OPTIONS)
 -.219 E F0(The)108 549.6 Q F2(-f)3.524 E F0 1.024
 (command-line option, when follo)3.524 F 1.024
 (wed by a satellite name or object number and starting date/time,)-.25 F
-(allo)108 561.6 Q(ws)-.25 E F3(PREDICT)3.656 E F0 1.156
-(to respond with satellite positional information.)3.656 F 1.155
-(This feature allo)6.155 F(ws)-.25 E F3(PREDICT)3.655 E F0 1.155(to be)
-3.655 F(in)108 573.6 Q -.2(vo)-.4 G -.1(ke).2 G 3.397(dw).1 G .897(ithi\
+(allo)108 561.6 Q(ws)-.25 E F3(PREDICT)3.655 E F0 1.155
+(to respond with satellite positional information.)3.655 F 1.156
+(This feature allo)6.155 F(ws)-.25 E F3(PREDICT)3.656 E F0 1.156(to be)
+3.656 F(in)108 573.6 Q -.2(vo)-.4 G -.1(ke).2 G 3.398(dw).1 G .897(ithi\
 n other applications that need to determine the location of a satellite\
- at a particular point in)-3.397 F .219
+ at a particular point in)-3.398 F .413
 (time, such as the location of where a CCD camera image w)108 585.6 R
-.218(as tak)-.1 F .218(en by a P)-.1 F .218
-(acsat satellite based on its times-)-.15 F(tamp.)108 597.6 Q 1.218(The\
+.413(as tak)-.1 F .413(en by a P)-.1 F .413
+(acsat satellite based on its time-)-.15 F(stamp.)108 597.6 Q 1.218(The\
  information produced includes the date/time in Unix format \(the numbe\
 r of seconds since midnight)108 621.6 R 1.744
 (UTC on January 1, 1970\), the date/time in ASCII \(UTC\), the ele)108
-633.6 R -.25(va)-.25 G 1.744(tion of the satellite in de).25 F 1.744
+633.6 R -.25(va)-.25 G 1.744(tion of the satellite in de).25 F 1.745
 (grees, the)-.15 F .336(azimuth heading of the satellite, the orbital p\
 hase \(modulo 256\), the latitude and longitude of the satellite')108
 645.6 R(s)-.55 E 1.459(sub-satellite point at the time speci\214ed, the\
@@ -803,343 +836,376 @@ hase \(modulo 256\), the latitude and longitude of the satellite')108
 (ocation, the orbit number)-2.5 E 2.5(,a)-.4 G(nd the spacecraft')-2.5 E
 2.5(ss)-.55 G(unlight visibility information.)-2.5 E 1.326(The date/tim\
 e must be speci\214ed in Unix format \(number of seconds since midnight\
- UTC on January 1,)108 693.6 R 2.549(1970\). If)108 705.6 R .049(no sta\
+ UTC on January 1,)108 693.6 R 2.548(1970\). If)108 705.6 R .049(no sta\
 rting or ending time is speci\214ed, the current date/time is assumed a\
-nd a single line of output)2.549 F 1.731(is produced.)108 717.6 R 1.731
+nd a single line of output)2.549 F 1.732(is produced.)108 717.6 R 1.731
 (If a starting and ending time are speci\214ed, a list of coordinates b\
-e)6.731 F 1.732(ginning at the starting)-.15 F 2.489(time/date and endi\
+e)6.732 F 1.731(ginning at the starting)-.15 F 2.489(time/date and endi\
 ng with the ending time/date will be returned by the program with a one\
- second)108 729.6 R(KD2BD Softw)72 768 Q 133.005(are 15)-.1 F(May 2006)
-2.5 E(6)202.335 E EP
+ second)108 729.6 R(KD2BD Softw)72 768 Q 133.005(are 05)-.1 F(May 2018)
+2.5 E(6)202.335 E 0 Cg EP
 %%Page: 7 7
 %%BeginPageSetup
 BP
 %%EndPageSetup
 /F0 10/Times-Roman@0 SF 142.255(PREDICT\(1\) KD2BD)72 48 R(Softw)2.5 E
-142.255(are PREDICT\(1\))-.1 F 3.185(resolution. If)108 84 R .685
-(the letter)3.185 F/F1 10/Times-Italic@0 SF(m)3.185 E F0 .686(is append\
+142.255(are PREDICT\(1\))-.1 F 3.186(resolution. If)108 84 R .686
+(the letter)3.186 F/F1 10/Times-Italic@0 SF(m)3.186 E F0 .685(is append\
 ed to the ending time/date, then the data returned by the program will)
-3.185 F(ha)108 96 Q 1.127 -.15(ve a o)-.2 H .827(ne minute resolution.)
-.15 F(The)5.827 E F1(-o)3.327 E F0 .827(option allo)3.327 F .826
+3.186 F(ha)108 96 Q 1.126 -.15(ve a o)-.2 H .826(ne minute resolution.)
+.15 F(The)5.826 E F1(-o)3.326 E F0 .827(option allo)3.327 F .827
 (ws the program to write the calculated data to an output)-.25 F
 (\214le rather than directing it to the standard output de)108 108 Q
 (vice if desired.)-.25 E(The proper syntax for this option is as follo)
 108 132 Q(ws:)-.25 E F1(pr)144 156 Q
-(edict -f ISS 977446390 977446400 -o data\214le)-.37 E F0 3.108(Al)108
+(edict -f ISS 977446390 977446400 -o data\214le)-.37 E F0 3.109(Al)108
 180 S .609(ist of coordinates starting at the current date/time and end\
-ing 10 seconds later may be produced by the)-3.108 F(follo)108 192 Q
-(wing command:)-.25 E F1(pr)144 216 Q(edict -f ISS +10)-.37 E F0 1.811
+ing 10 seconds later may be produced by the)-3.109 F(follo)108 192 Q
+(wing command:)-.25 E F1(pr)144 216 Q(edict -f ISS +10)-.37 E F0 1.81
 (If a list of coordinates specifying the position of the satellite e)108
-240 R -.15(ve)-.25 G 1.81(ry minute for the ne).15 F 1.81
+240 R -.15(ve)-.25 G 1.811(ry minute for the ne).15 F 1.811
 (xt 10 minutes is)-.15 F(desired, the follo)108 252 Q
 (wing command may be used:)-.25 E F1(pr)144 276 Q(edict -f ISS +10m)-.37
 E F0(If a satellite name contains spaces, then the entire name must be \
-enclosed by "quotes".)108 300 Q(The)108 324 Q F1(-p)2.978 E F0 .478
-(option allo)2.978 F .479
+enclosed by "quotes".)108 300 Q(The)108 324 Q F1(-p)2.979 E F0 .479
+(option allo)2.979 F .479
 (ws orbital predictions for a single pass to be generated by)-.25 F/F2
-10/Times-Bold@0 SF(PREDICT)2.979 E F0 .479(via the command-)2.979 F 2.5
+10/Times-Bold@0 SF(PREDICT)2.979 E F0 .478(via the command-)2.978 F 2.5
 (line. F)108 336 R(or e)-.15 E(xample:)-.15 E F1(pr)144 360 Q
 (edict -p OSCAR-11 1003536767)-.37 E F0 .505(starts predictions for the\
  OSCAR-11 satellite at a Unix time of 1003536767 \(Sat 20Oct01 00:12:47\
  UTC\).)108 384 R .117
 (If the starting date/time is omitted, the current date/time is used.)
 108 396 R .117(If a pass is already in progress at the start-)5.117 F
-.132(ing date/time speci\214ed, orbital predictions are mo)108 408 R
+.131(ing date/time speci\214ed, orbital predictions are mo)108 408 R
 -.15(ve)-.15 G 2.631(db).15 G .131(ack to the be)-2.631 F .131
-(ginning of A)-.15 F .131(OS of the current pass, and)-.55 F
+(ginning of A)-.15 F .132(OS of the current pass, and)-.55 F
 (data for the entire pass from A)108 420 Q(OS to LOS is pro)-.55 E
-(vided.)-.15 E .036(When either the)108 444 R F1(-f)2.536 E F0(or)2.536
-E F1(-p)2.536 E F0 .037(options are used,)2.536 F F2(PREDICT)2.537 E F0
-.037(produces an output consisting of the date/time in Unix)2.537 F .202
+(vided.)-.15 E .037(When either the)108 444 R F1(-f)2.537 E F0(or)2.537
+E F1(-p)2.537 E F0 .037(options are used,)2.537 F F2(PREDICT)2.537 E F0
+.036(produces an output consisting of the date/time in Unix)2.537 F .201
 (format, the date and time in ASCII \(UTC\), the ele)108 456 R -.25(va)
--.25 G .201(tion of the satellite in de).25 F .201
-(grees, the azimuth of the satel-)-.15 F 1.191(lite in de)108 468 R
+-.25 G .202(tion of the satellite in de).25 F .202
+(grees, the azimuth of the satel-)-.15 F 1.192(lite in de)108 468 R
 1.192(grees, the orbital phase \(modulo 256\), the latitude \(N\) and l\
-ongitude \(W\) of the satellite')-.15 F 3.692(ss)-.55 G(ub-)-3.692 E
-.275(satellite point, the slant range to the satellite \(in kilometers\
-\), the orbit number)108 480 R 2.774(,a)-.4 G .274(nd the spacecraft')
--2.774 F 2.774(ss)-.55 G(unlight)-2.774 E(visibility information.)108
-492 Q -.15(Fo)5 G 2.5(re).15 G(xample:)-2.65 E/F3 10/Courier@0 SF
-(1003611710 Sat 20Oct01 21:01:50)108 516 Q 18(11 6)18 F 12
-(164 51 72 1389)12 F(16669 *)12 E F0(The output isn')108 540 Q 2.5(ta)
--.18 G(nnotated, b)-2.5 E(ut then ag)-.2 E(ain, it')-.05 E 2.5(sm)-.55 G
-(eant to be read by other softw)-2.5 E(are.)-.1 E/F4 10.95/Times-Bold@0
-SF(SER)72 568.8 Q(VER MODE)-.602 E F2(PREDICT')108 580.8 Q(s)-.37 E F0
-(netw)2.667 E .167(ork sock)-.1 F .167(et interf)-.1 F .167(ace allo)-.1
-F .167(ws the program to operate as a serv)-.25 F .166
-(er capable of pro)-.15 F .166(viding track-)-.15 F .124(ing data and o\
-ther information to client applications using the UDP protocol.)108
-592.8 R .124(It is e)5.124 F -.15(ve)-.25 G 2.624(np).15 G .124
-(ossible to ha)-2.624 F .424 -.15(ve t)-.2 H(he).15 E F2(PREDICT)108
-604.8 Q F0(serv)3.047 E .547
-(er and client applications running on separate machines pro)-.15 F .547
-(vided the clients are connected)-.15 F(to the serv)108 616.8 Q
-(er through a functioning netw)-.15 E(ork connection.)-.1 E(The)108
-640.8 Q F1(-s)2.5 E F0(switch is used to start)2.5 E F2(PREDICT)2.5 E F0
-(in serv)2.5 E(er mode:)-.15 E F1(pr)144 664.8 Q(edict -s)-.37 E F0 .963
-(By def)108 688.8 R(ault,)-.1 E F2(PREDICT)3.463 E F0 .964(uses sock)
-3.464 F .964(et port 1210 for communicating with client applications.)
--.1 F .964(Therefore, the)5.964 F(follo)108 700.8 Q
-(wing line needs to be added to the end your)-.25 E F1(/etc/services)2.5
-E F0(\214le:)2.5 E F1(pr)144 724.8 Q 5(edict 1210/udp)-.37 F F0
-(KD2BD Softw)72 768 Q 133.005(are 15)-.1 F(May 2006)2.5 E(7)202.335 E EP
+ongitude \(W\) of the satellite')-.15 F 3.691(ss)-.55 G(ub-)-3.691 E
+.274(satellite point, the slant range to the satellite \(in kilometers\
+\), the orbit number)108 480 R 2.775(,a)-.4 G .275(nd the spacecraft')
+-2.775 F 2.775(ss)-.55 G(unlight)-2.775 E .446(visibility information.)
+108 492 R -.15(Fo)5.446 G 2.946(re).15 G(xample:)-3.096 E/F3 10
+/Courier@0 SF .446(1003611710 Sat 20Oct01 21:01:50)6.446 F 18.446(11 6)
+18.446 F(164)12.446 E 12.186(51 72 1389)108 504 R .186(16669 *)12.186 F
+F0 .186(The output isn')2.686 F 2.686(ta)-.18 G .186(nnotated, b)-2.686
+F .186(ut then ag)-.2 F .186(ain, it')-.05 F 2.686(sm)-.55 G .186
+(eant to be read by other)-2.686 F(softw)108 516 Q(are.)-.1 E(The)108
+540 Q F1(-dp)3.251 E F0 .751
+(option produces a quick orbital prediction for the ne)3.251 F .75
+(xt pass of a speci\214ed satellite, including 100)-.15 F(MHz do)108 552
+Q(wnlink Doppler shift information, in CSV format.)-.25 E -.15(Fo)5 G
+2.5(re).15 G(xample:)-2.65 E F1(pr)144 576 Q(edict -dp ISS)-.37 E F0
+(produces:)108 600 Q F3(1525500165,Sat 05May18 06:02:45,701.256856)108
+624 Q(1525500169,Sat 05May18 06:02:49,678.755942)108 636 Q
+(1525500172,Sat 05May18 06:02:52,656.033048)108 648 Q
+(1525500176,Sat 05May18 06:02:56,633.093151)108 660 Q
+(1525500179,Sat 05May18 06:02:59,609.940999)108 672 Q
+(1525500183,Sat 05May18 06:03:03,586.582443)108 684 Q
+(1525500186,Sat 05May18 06:03:06,563.022553)108 696 Q
+(<... output trimmed ...>)108 708 Q
+(1525500367,Sat 05May18 06:06:07,-733.663728)108 720 Q F0(KD2BD Softw)72
+768 Q 133.005(are 05)-.1 F(May 2018)2.5 E(7)202.335 E 0 Cg EP
 %%Page: 8 8
 %%BeginPageSetup
 BP
 %%EndPageSetup
 /F0 10/Times-Roman@0 SF 142.255(PREDICT\(1\) KD2BD)72 48 R(Softw)2.5 E
-142.255(are PREDICT\(1\))-.1 F .98
+142.255(are PREDICT\(1\))-.1 F/F1 10/Courier@0 SF
+(1525500370,Sat 05May18 06:06:10,-755.793182)108 84 Q
+(1525500374,Sat 05May18 06:06:14,-777.690366)108 96 Q
+(1525500377,Sat 05May18 06:06:17,-799.351435)108 108 Q
+(1525500381,Sat 05May18 06:06:21,-820.773340)108 120 Q
+(1525500384,Sat 05May18 06:06:24,-841.952820)108 132 Q
+(1525500388,Sat 05May18 06:06:28,-862.887147)108 144 Q F0 .838
+(where the Unix time is follo)108 180 R .838
+(wed by the UTC date/time and 100 MHz do)-.25 F .838
+(wnlink-referenced Doppler shift.)-.25 F
+(The satellite name can be follo)108 192 Q
+(wed by a starting date/time and ending date/time much lik)-.25 E 2.5
+(et)-.1 G(he)-2.5 E/F2 10/Times-Italic@0 SF(-f)2.5 E F0(option.)2.5 E/F3
+10.95/Times-Bold@0 SF(SER)72 220.8 Q(VER MODE)-.602 E/F4 10/Times-Bold@0
+SF(PREDICT')108 232.8 Q(s)-.37 E F0(netw)2.667 E .167(ork sock)-.1 F
+.167(et interf)-.1 F .167(ace allo)-.1 F .167
+(ws the program to operate as a serv)-.25 F .166(er capable of pro)-.15
+F .166(viding track-)-.15 F .124(ing data and other information to clie\
+nt applications using the UDP protocol.)108 244.8 R .124(It is e)5.124 F
+-.15(ve)-.25 G 2.624(np).15 G .124(ossible to ha)-2.624 F .424 -.15
+(ve t)-.2 H(he).15 E F4(PREDICT)108 256.8 Q F0(serv)3.047 E .547
+(er and client applications running on separate machines pro)-.15 F .547
+(vided the clients are connected)-.15 F(to the serv)108 268.8 Q
+(er through a functioning netw)-.15 E(ork connection.)-.1 E(The)108
+292.8 Q F2(-s)2.5 E F0(switch is used to start)2.5 E F4(PREDICT)2.5 E F0
+(in serv)2.5 E(er mode:)-.15 E F2(pr)144 316.8 Q(edict -s)-.37 E F0 .963
+(By def)108 340.8 R(ault,)-.1 E F4(PREDICT)3.463 E F0 .964(uses sock)
+3.464 F .964(et port 1210 for communicating with client applications.)
+-.1 F .964(Therefore, the)5.964 F(follo)108 352.8 Q
+(wing line needs to be added to the end your)-.25 E F2(/etc/services)2.5
+E F0(\214le:)2.5 E F2(pr)144 376.8 Q 5(edict 1210/udp)-.37 F F0 .98
 (The port number \(1210\) can be changed to something else if desired.)
-108 84 R .98(There is no need to recompile the)5.98 F .414
-(program if it is changed.)108 96 R 2.014 -.8(To r)5.414 H .414
-(un more than one instance of).8 F/F1 10/Times-Bold@0 SF(PREDICT)2.915 E
-F0 .415(in serv)2.915 F .415(er mode on a single host, an)-.15 F .344
-(alternate port must be speci\214ed when in)108 108 R -.2(vo)-.4 G .344
-(king the additional instances of).2 F F1(PREDICT)2.844 E F0 5.344(.T)C
-.344(his can be accom-)-5.344 F(plished by using the)108 120 Q/F2 10
-/Times-Italic@0 SF(-n)2.5 E F0(switch:)2.5 E F2(pr)144 144 Q
-(edict -n 1211 -t other_tle_\214le -s)-.37 E F0 .927(When in)108 168 R
+108 400.8 R .98(There is no need to recompile the)5.98 F .414
+(program if it is changed.)108 412.8 R 2.014 -.8(To r)5.414 H .414
+(un more than one instance of).8 F F4(PREDICT)2.915 E F0 .415(in serv)
+2.915 F .415(er mode on a single host, an)-.15 F .344
+(alternate port must be speci\214ed when in)108 424.8 R -.2(vo)-.4 G
+.344(king the additional instances of).2 F F4(PREDICT)2.844 E F0 5.344
+(.T)C .344(his can be accom-)-5.344 F(plished by using the)108 436.8 Q
+F2(-n)2.5 E F0(switch:)2.5 E F2(pr)144 460.8 Q
+(edict -n 1211 -t other_tle_\214le -s)-.37 E F0 .927(When in)108 484.8 R
 -.2(vo)-.4 G -.1(ke).2 G 3.427(di).1 G 3.427(ns)-3.427 G(erv)-3.427 E
-.927(er mode,)-.15 F F1(PREDICT)3.427 E F0 .928
+.927(er mode,)-.15 F F4(PREDICT)3.427 E F0 .928
 (immediately enters Multi-Satellite T)3.427 F .928
-(racking Mode, and mak)-.35 F(es)-.1 E(li)108 180 Q 1.037 -.15(ve t)-.25
-H .737(racking data a).15 F -.25(va)-.2 G .737(ilable to clients.).25 F
-.737(Clients may poll)5.737 F F1(PREDICT)3.237 E F0 .737
+(racking Mode, and mak)-.35 F(es)-.1 E(li)108 496.8 Q 1.037 -.15(ve t)
+-.25 H .737(racking data a).15 F -.25(va)-.2 G .737(ilable to clients.)
+.25 F .737(Clients may poll)5.737 F F4(PREDICT)3.237 E F0 .737
 (for tracking data when the program is)3.237 F .829
-(running in either the Multi-Satellite or Single Satellite T)108 192 R
+(running in either the Multi-Satellite or Single Satellite T)108 508.8 R
 .829(racking Mode.)-.35 F .83(When in Multi-Satellite T)5.829 F(racking)
--.35 E .017(mode, tracking data for an)108 204 R 2.517(yo)-.15 G 2.517
+-.35 E .017(mode, tracking data for an)108 520.8 R 2.517(yo)-.15 G 2.517
 (ft)-2.517 G .017(he 24 satellites in the program')-2.517 F 2.517(sd)
 -.55 G .016(atabase may be accessed by client applica-)-2.517 F 2.767
-(tions. When)108 216 R .267(in Single-Satellite T)2.767 F .267
+(tions. When)108 532.8 R .267(in Single-Satellite T)2.767 F .267
 (racking mode, only li)-.35 F .567 -.15(ve t)-.25 H .268
 (racking data for the single satellite being track).15 F(ed)-.1 E 1.242
-(may be accessed.)108 228 R 1.241
+(may be accessed.)108 544.8 R 1.241
 (Either tracking mode may be ended at an)6.242 F 3.741(yt)-.15 G 3.741
-(ime. When)-3.741 F 1.241(this is done,)3.741 F F1(PREDICT)3.741 E F0
+(ime. When)-3.741 F 1.241(this is done,)3.741 F F4(PREDICT)3.741 E F0
 (will)3.741 E 1.66(return the last calculated satellite tracking data u\
-ntil the program is ag)108 240 R 1.66(ain put into a real-time tracking)
--.05 F 2.593(mode. This)108 252 R(allo)2.593 E .093(ws the user to retu\
-rn to the main menu, and use other features of the program without send\
--)-.25 F(ing potentially harmful data to client applications.)108 264 Q
-.042(The best w)108 288 R .042(ay to write a client application is to u\
-se the demonstration program \(demo.c\) included in this dis-)-.1 F
-(trib)108 300 Q 1.196(ution of)-.2 F F1(PREDICT)3.696 E F0 1.196
+ntil the program is ag)108 556.8 R 1.66
+(ain put into a real-time tracking)-.05 F 2.593(mode. This)108 568.8 R
+(allo)2.593 E .093(ws the user to return to the main menu, and use othe\
+r features of the program without send-)-.25 F
+(ing potentially harmful data to client applications.)108 580.8 Q .042
+(The best w)108 604.8 R .042(ay to write a client application is to use\
+ the demonstration program \(demo.c\) included in this dis-)-.1 F(trib)
+108 616.8 Q 1.196(ution of)-.2 F F4(PREDICT)3.696 E F0 1.196
 (as a guide.)3.696 F 1.195(The sample program has comments to e)6.195 F
 1.195(xplain ho)-.15 F 3.695(we)-.25 G 1.195(ach component)-3.695 F
-3.954(operates. It)108 312 R 1.454
+3.954(operates. It)108 628.8 R 1.454
 (is useful to pipe the output of this program through)3.954 F F2(less)
 3.955 E F0 1.455(to easily bro)3.955 F 1.455(wse through the data)-.25 F
-(returned \()108 324 Q F2(demo | less)A F0(\).)A .023
+(returned \()108 640.8 Q F2(demo | less)A F0(\).)A .023
 (In operation, a character array is \214lled with the command and ar)108
-348 R .023(guments to be sent to)-.18 F F1(PREDICT)2.522 E F0 5.022(.A)C
-(sock)-2.5 E(et)-.1 E .658
+664.8 R .023(guments to be sent to)-.18 F F4(PREDICT)2.522 E F0 5.022
+(.A)C(sock)-2.5 E(et)-.1 E .658
 (connection is then opened, the request is sent, a response is recei)108
-360 R -.15(ve)-.25 G .658(d, and the sock).15 F .659
-(et connection is closed.)-.1 F(The command and ar)108 372 Q
-(guments are in ASCII te)-.18 E(xt format.)-.15 E(Se)108 396 Q -.15(ve)
--.25 G .59(ral e).15 F .59(xcellent netw)-.15 F .589
-(ork client applications are included in this release of)-.1 F F1
+676.8 R -.15(ve)-.25 G .658(d, and the sock).15 F .659
+(et connection is closed.)-.1 F(The command and ar)108 688.8 Q
+(guments are in ASCII te)-.18 E(xt format.)-.15 E(Se)108 712.8 Q -.15
+(ve)-.25 G .59(ral e).15 F .59(xcellent netw)-.15 F .589
+(ork client applications are included in this release of)-.1 F F4
 (PREDICT)3.089 E F0 3.089(,a)C .589(nd may be found)-3.089 F(under the)
-108 408 Q F2(pr)2.5 E(edict/clients)-.37 E F0(directory)2.5 E(.)-.65 E
-/F3 10.95/Times-Bold@0 SF(ADDING SA)72 436.8 Q(TELLITES)-1.04 E F0 .121
-(One of the most frequently ask)108 448.8 R .121(ed questions is ho)-.1
-F 2.621(ws)-.25 G .121(atellites in)-2.621 F F1(PREDICT')2.621 E(s)-.37
-E F0 .122(orbital database may be added,)2.621 F .268
-(modi\214ed, or replaced.)108 460.8 R .268
-(As it turns out, there are se)5.268 F -.15(ve)-.25 G .267(ral w).15 F
-.267(ays in which this can be done.)-.1 F .267(Probably the easi-)5.267
-F 1.306(est is to manually edit your)108 472.8 R F2(~/.pr)3.806 E
-(edict/pr)-.37 E(edict.tle)-.37 E F0 1.306(\214le, and replace an e)
-3.806 F 1.306(xisting satellite')-.15 F 3.806(se)-.55 G 1.306
-(ntry with 2-line)-3.806 F -.25(Ke)108 484.8 S .109
-(plerian data for the ne).25 F 2.609(ws)-.25 G 2.609(atellite. If)-2.609
-F .108(this method is chosen, ho)2.608 F(we)-.25 E -.15(ve)-.25 G .908
--.4(r, j).15 H .108(ust mak).4 F 2.608(es)-.1 G .108(ure to include ONL)
--2.608 F 2.608(Yt)-1 G(he)-2.608 E(tw)108 496.8 Q 2.5(ol)-.1 G
-(ine data, and nothing else.)-2.5 E .435(Another w)108 520.8 R .435
-(ay is to is select the K)-.1 F -.15(ey)-.25 G .435
-(board Edit option from the program').15 F 2.935(sM)-.55 G .435
-(ain Menu, select a satellite you)-2.935 F 1.083(wish to replace.)108
-532.8 R 1.082(Edit the name and object number \(replacing the old infor\
-mation with the ne)6.083 F 3.582(wi)-.25 G(nforma-)-3.582 E 3.101
-(tion\). Just)108 544.8 R .601
-(hit ENTER, and accept all the other orbital parameters sho)3.101 F
-3.101(wn. Get)-.25 F .602(back to)3.102 F F1(PREDICT')3.102 E(s)-.37 E
-F0(Main)3.102 E 2.679(Menu. Select)108 556.8 R .179(Auto Update, and th\
-en enter the \214lename containing the 2-line element data for your f)
-2.679 F -.2(avo)-.1 G(rite).2 E(ne)108 568.8 Q 2.503(ws)-.25 G 2.503
-(atellite. The)-2.503 F(ne)2.504 E 2.504(ws)-.25 G .004
-(atellite data should be detected by)-2.504 F F1(PREDICT)2.504 E F0
-2.504(,a)C .004(nd the orbital data for the old satel-)-2.504 F
-(lite will be o)108 580.8 Q -.15(ve)-.15 G(rwritten by the ne).15 E 2.5
-(wd)-.25 G(ata.)-2.5 E F3(NEA)72 609.6 Q 2.738(TT)-1.04 G(RICKS)-2.738 E
-F0 .142(In addition to tracking and predicting passes of satellites,)108
-621.6 R F1(PREDICT)2.642 E F0 .141(may also be used to generate a N)
-2.642 F(ASA)-.35 E(tw)108 633.6 Q .362(o-line K)-.1 F .362
-(eplerian element data set from data entered via k)-.25 F -.15(ey)-.1 G
-.362(board. F).15 F .362(or e)-.15 F .362(xample, let')-.15 F 2.862(ss)
--.55 G .362(ay you')-2.862 F .362(re listening)-.5 F .13
-(to Space Shuttle audio re-broadcasts via W)108 645.6 R(A3N)-1.2 E .129
-(AN and K)-.35 F .129(eplerian elements for the Space Shuttle')-.25 F
-2.629(so)-.55 G .129(rbit are)-2.629 F(gi)108 657.6 Q -.15(ve)-.25 G
-3.343(nb).15 G 3.343(yt)-3.343 G .843(he announcer)-3.343 F 3.343(.T)
--.55 G .844(he orbital data pro)-3.343 F .844(vided by W)-.15 F(A3N)-1.2
-E .844(AN in v)-.35 F .844(erbal form may be manually entered)-.15 F
-(into)108 669.6 Q F1(PREDICT')2.966 E(s)-.37 E F0 .466
-(orbital database using option)2.966 F F1([E])2.965 E F0 .465
-(of the program')2.965 F 2.965(sm)-.55 G .465(ain menu \(K)-2.965 F -.15
-(ey)-.25 G .465(board Edit of Orbital).15 F .063
-(Database\). The orbital data for the Space Shuttle in N)108 681.6 R
-.063(ASA tw)-.35 F .064(o-line element form can then be found in your)
--.1 F .081(orbital database \214le, and may imported to an)108 693.6 R
-2.581(yo)-.15 G .08(ther satellite tracking program that accepts tw)
--2.581 F .08(o-line element)-.1 F(\214les or distrib)108 705.6 Q
-(uted to others electronically)-.2 E(.)-.65 E 1.224
-(It is also possible to run)108 729.6 R F1(PREDICT)3.724 E F0 1.225
-(as a background process and direct its display to an unused virtual)
-3.724 F(KD2BD Softw)72 768 Q 133.005(are 15)-.1 F(May 2006)2.5 E(8)
-202.335 E EP
+108 724.8 Q F2(pr)2.5 E(edict/clients)-.37 E F0(directory)2.5 E(.)-.65 E
+(KD2BD Softw)72 768 Q 133.005(are 05)-.1 F(May 2018)2.5 E(8)202.335 E 0
+Cg EP
 %%Page: 9 9
 %%BeginPageSetup
 BP
 %%EndPageSetup
 /F0 10/Times-Roman@0 SF 142.255(PREDICT\(1\) KD2BD)72 48 R(Softw)2.5 E
-142.255(are PREDICT\(1\))-.1 F(console by using the follo)108 84 Q
-(wing command:)-.25 E/F1 10/Times-Italic@0 SF(pr)128 108 Q(edict < /de)
--.37 E(v/tty8 > /de)-.15 E(v/tty8 &)-.15 E F0 .857
-(Switching to virtual console number 8 \(AL)108 132 R -.92(T-)-.92 G
-.857(F8 in te).92 F .857(xt mode\) will allo)-.15 F(w)-.25 E/F2 10
-/Times-Bold@0 SF(PREDICT)3.357 E F0 .856(to be controlled and)3.357 F
-.421(displayed e)108 144 R -.15(ve)-.25 G 2.921(na).15 G .421(fter you')
--2.921 F .721 -.15(ve l)-.5 H .421(ogged out.).15 F .421
+142.255(are PREDICT\(1\))-.1 F/F1 10.95/Times-Bold@0 SF(ADDING SA)72 84
+Q(TELLITES)-1.04 E F0 .121(One of the most frequently ask)108 96 R .121
+(ed questions is ho)-.1 F 2.621(ws)-.25 G .121(atellites in)-2.621 F/F2
+10/Times-Bold@0 SF(PREDICT')2.621 E(s)-.37 E F0 .122
+(orbital database may be added,)2.621 F .268(modi\214ed, or replaced.)
+108 108 R .268(As it turns out, there are se)5.268 F -.15(ve)-.25 G .267
+(ral w).15 F .267(ays in which this can be done.)-.1 F .267
+(Probably the easi-)5.267 F 1.306(est is to manually edit your)108 120 R
+/F3 10/Times-Italic@0 SF(~/.pr)3.806 E(edict/pr)-.37 E(edict.tle)-.37 E
+F0 1.306(\214le, and replace an e)3.806 F 1.306(xisting satellite')-.15
+F 3.806(se)-.55 G 1.306(ntry with 2-line)-3.806 F -.25(Ke)108 132 S .109
+(plerian data for the ne).25 F 2.609(ws)-.25 G 2.609(atellite. If)-2.609
+F .108(this method is chosen, ho)2.608 F(we)-.25 E -.15(ve)-.25 G .908
+-.4(r, j).15 H .108(ust mak).4 F 2.608(es)-.1 G .108(ure to include ONL)
+-2.608 F 2.608(Yt)-1 G(he)-2.608 E(tw)108 144 Q 2.5(ol)-.1 G
+(ine data, and nothing else.)-2.5 E .435(Another w)108 168 R .435
+(ay is to is select the K)-.1 F -.15(ey)-.25 G .435
+(board Edit option from the program').15 F 2.935(sM)-.55 G .435
+(ain Menu, select a satellite you)-2.935 F 1.083(wish to replace.)108
+180 R 1.082(Edit the name and object number \(replacing the old informa\
+tion with the ne)6.083 F 3.582(wi)-.25 G(nforma-)-3.582 E 3.101
+(tion\). Just)108 192 R .601
+(hit ENTER, and accept all the other orbital parameters sho)3.101 F
+3.101(wn. Get)-.25 F .602(back to)3.102 F F2(PREDICT')3.102 E(s)-.37 E
+F0(Main)3.102 E 2.679(Menu. Select)108 204 R .179(Auto Update, and then\
+ enter the \214lename containing the 2-line element data for your f)
+2.679 F -.2(avo)-.1 G(rite).2 E(ne)108 216 Q 2.503(ws)-.25 G 2.503
+(atellite. The)-2.503 F(ne)2.504 E 2.504(ws)-.25 G .004
+(atellite data should be detected by)-2.504 F F2(PREDICT)2.504 E F0
+2.504(,a)C .004(nd the orbital data for the old satel-)-2.504 F
+(lite will be o)108 228 Q -.15(ve)-.15 G(rwritten by the ne).15 E 2.5
+(wd)-.25 G(ata.)-2.5 E F1(NEA)72 256.8 Q 2.738(TT)-1.04 G(RICKS)-2.738 E
+F0 .142(In addition to tracking and predicting passes of satellites,)108
+268.8 R F2(PREDICT)2.642 E F0 .141(may also be used to generate a N)
+2.642 F(ASA)-.35 E(tw)108 280.8 Q .362(o-line K)-.1 F .362
+(eplerian element data set from data entered via k)-.25 F -.15(ey)-.1 G
+.362(board. F).15 F .362(or e)-.15 F .362(xample, let')-.15 F 2.862(ss)
+-.55 G .362(ay you')-2.862 F .362(re listening)-.5 F .13
+(to Space Shuttle audio re-broadcasts via W)108 292.8 R(A3N)-1.2 E .129
+(AN and K)-.35 F .129(eplerian elements for the Space Shuttle')-.25 F
+2.629(so)-.55 G .129(rbit are)-2.629 F(gi)108 304.8 Q -.15(ve)-.25 G
+3.343(nb).15 G 3.343(yt)-3.343 G .843(he announcer)-3.343 F 3.343(.T)
+-.55 G .844(he orbital data pro)-3.343 F .844(vided by W)-.15 F(A3N)-1.2
+E .844(AN in v)-.35 F .844(erbal form may be manually entered)-.15 F
+(into)108 316.8 Q F2(PREDICT')2.966 E(s)-.37 E F0 .466
+(orbital database using option)2.966 F F2([E])2.965 E F0 .465
+(of the program')2.965 F 2.965(sm)-.55 G .465(ain menu \(K)-2.965 F -.15
+(ey)-.25 G .465(board Edit of Orbital).15 F .063
+(Database\). The orbital data for the Space Shuttle in N)108 328.8 R
+.063(ASA tw)-.35 F .064(o-line element form can then be found in your)
+-.1 F .081(orbital database \214le, and may imported to an)108 340.8 R
+2.581(yo)-.15 G .08(ther satellite tracking program that accepts tw)
+-2.581 F .08(o-line element)-.1 F(\214les or distrib)108 352.8 Q
+(uted to others electronically)-.2 E(.)-.65 E .093
+(It is also possible to run)108 376.8 R F2(PREDICT)2.593 E F0 .093(as a\
+ background process and direct its display to an unused virtual con-)
+2.593 F(sole by using the follo)108 388.8 Q(wing command:)-.25 E F3(pr)
+128 412.8 Q(edict < /de)-.37 E(v/tty8 > /de)-.15 E(v/tty8 &)-.15 E F0
+.857(Switching to virtual console number 8 \(AL)108 436.8 R -.92(T-)-.92
+G .857(F8 in te).92 F .857(xt mode\) will allo)-.15 F(w)-.25 E F2
+(PREDICT)3.357 E F0 .856(to be controlled and)3.357 F .421(displayed e)
+108 448.8 R -.15(ve)-.25 G 2.921(na).15 G .421(fter you')-2.921 F .721
+-.15(ve l)-.5 H .421(ogged out.).15 F .421
 (This is especially handy when running)5.421 F F2(PREDICT)2.922 E F0
-.422(in serv)2.922 F .422(er mode)-.15 F(on a remote machine.)108 156 Q
-/F3 10.95/Times-Bold@0 SF(GLOSSAR)72 184.8 Q 2.738(YO)-.383 G 2.738(FT)
--2.738 G(ERMS)-2.738 E F0 .028(The follo)108 196.8 R .028(wing terms ar\
-e frequently used in association with satellite communications and spac\
-e technology:)-.25 F F3 -.493(AO)72 225.6 S(S:).493 E F0 .221(Acquisiti\
-on of Signal - the time at which a ground station \214rst acquires radi\
-o signals from a satellite.)108 237.6 R F2(PRE-)2.722 E(DICT)108 249.6 Q
-F0 .479(de\214nes A)2.979 F .479
-(OS as the time when the satellite being track)-.55 F .478
-(ed comes within +/- 0.03 de)-.1 F .478(grees of the local)-.15 F
-(horizon, although it may ha)108 261.6 Q .3 -.15(ve t)-.2 H 2.5(or).15 G
-(ise higher than this before signals are \214rst heard.)-2.5 E F3 -.274
-(Ap)72 278.4 S(ogee:).274 E F0(Point in a satellite')108 290.4 Q 2.5(so)
+.422(in serv)2.922 F .422(er mode)-.15 F(on a remote machine.)108 460.8
+Q F1(GLOSSAR)72 489.6 Q 2.738(YO)-.383 G 2.738(FT)-2.738 G(ERMS)-2.738 E
+F0(The follo)108 501.6 Q(wing terms are frequently used in association \
+with satellite communications and space technology:)-.25 E F1 -.493(AO)
+72 530.4 S(S:).493 E F0 .221(Acquisition of Signal - the time at which \
+a ground station \214rst acquires radio signals from a satellite.)108
+542.4 R F2(PRE-)2.721 E(DICT)108 554.4 Q F0 .478(de\214nes A)2.978 F
+.478(OS as the time when the satellite being track)-.55 F .479
+(ed comes within +/- 0.03 de)-.1 F .479(grees of the local)-.15 F
+(horizon, although it may ha)108 566.4 Q .3 -.15(ve t)-.2 H 2.5(or).15 G
+(ise higher than this before signals are \214rst heard.)-2.5 E F1 -.274
+(Ap)72 583.2 S(ogee:).274 E F0(Point in a satellite')108 595.2 Q 2.5(so)
 -.55 G(rbit when the satellite is at its f)-2.5 E
 (arthest distance from the earth')-.1 E 2.5(ss)-.55 G(urf)-2.5 E(ace.)
--.1 E F3(Anomalistic P)72 307.2 Q(eriod:)-.219 E F0 2.5(As)108 319.2 S
+-.1 E F1(Anomalistic P)72 612 Q(eriod:)-.219 E F0 2.5(As)108 624 S
 (atellite orbital parameter specifying the time between successi)-2.5 E
-.3 -.15(ve p)-.25 H(erigees.).15 E F3(Ascending Node:)72 336 Q F0
-(Point in a satellite')108 348 Q 2.5(so)-.55 G
+.3 -.15(ve p)-.25 H(erigees.).15 E F1(Ascending Node:)72 640.8 Q F0
+(Point in a satellite')108 652.8 Q 2.5(so)-.55 G
 (rbit when its sub-satellite point crosses the equator mo)-2.5 E
-(ving south to north.)-.15 E F3(Azimuth:)72 364.8 Q F0 .174
-(The compass direction measured clockwise from true north.)108 376.8 R
-.174(North = 0 de)5.174 F .174(grees, East = 90 de)-.15 F .175
-(grees, South =)-.15 F(180 de)108 388.8 Q(grees, and W)-.15 E
-(est = 270 de)-.8 E(grees.)-.15 E F3(Descending Node:)72 405.6 Q F0
-(Point in a satellite')108 417.6 Q 2.5(so)-.55 G
-(rbit when its sub-satellite point crosses the equator mo)-2.5 E
-(ving north to south.)-.15 E F3(Doppler Shift:)72 434.4 Q F0 .541
-(The motion of a satellite in its orbit around the earth, and in man)108
-446.4 R 3.04(yc)-.15 G .54(ases the rotational motion of the earth)-3.04
-F .923(itself, causes radio signals generated by satellites to be recei)
-108 458.4 R -.15(ve)-.25 G 3.423(do).15 G 3.424(nE)-3.423 G .924
-(arth at frequencies slightly dif)-3.424 F(ferent)-.25 E .896
-(than those upon which the)108 470.4 R 3.396(yw)-.15 G .896
-(ere transmitted.)-3.396 F F2(PREDICT)3.396 E F0 .896
-(calculates what ef)3.396 F .895(fect these motions ha)-.25 F 1.195 -.15
-(ve u)-.2 H(pon).15 E(the reception of satellites transmitting on the 1\
-46 MHz and 435 MHz Amateur Radio bands.)108 482.4 Q F3(Ele)72 499.2 Q
--.11(va)-.164 G(tion:).11 E F0 .336(The angle between the local horizon\
- and the position of the satellite. A satellite that appears directly a\
-bo)108 511.2 R -.15(ve)-.15 G 2.79(ap)108 523.2 S .29
-(articular location is said to be located at an ele)-2.79 F -.25(va)-.25
-G .289(tion of 90 de).25 F .289
-(grees. A satellite located on the horizon of)-.15 F 3.078(ap)108 535.2
-S .578(articular location is said to be located at an ele)-3.078 F -.25
-(va)-.25 G .578(tion of 0 de).25 F 3.078(grees. A)-.15 F .578
-(satellite with an ele)3.078 F -.25(va)-.25 G .578(tion of less).25 F
-.266(than zero is positioned belo)108 547.2 R 2.766(wt)-.25 G .265(he l\
-ocal horizon, and radio communication with a satellite in such a positi\
-on)-2.766 F(is not possible under normal circumstances.)108 559.2 Q F3
--.274(Fo)72 576 S(otprint:).274 E F0 .049(Diameter of the Earth')108 588
-R 2.549(ss)-.55 G(urf)-2.549 E .049(ace visible from a satellite.)-.1 F
-.05(The higher the satellite')5.049 F 2.55(so)-.55 G .05
-(rbital altitude, the greater)-2.55 F
-(the footprint, and the wider the satellite')108 600 Q 2.5(sc)-.55 G
-(ommunications co)-2.5 E -.15(ve)-.15 G(rage.).15 E F3(LOS:)72 616.8 Q
-F0 .622(Loss of Signal - the time at which a ground station loses radio\
- contact with a satellite.)108 628.8 R F2(PREDICT)3.122 E F0(de\214nes)
-3.122 E(LOS as the time when the satellite being track)108 640.8 Q
-(ed comes within +/- 0.03 de)-.1 E(grees of the local horizon.)-.15 E F3
-(Orbital Phase:)72 657.6 Q F0 .434
-(An orbital "clock" that describes a satellite')108 669.6 R 2.934(so)
--.55 G .435
-(rbital position with respect to perigee. Orbital Phase may be)-2.934 F
-1.379(modulo 256, or modulo 360, and is sometimes referred to as mean a\
-nomaly when speaking of amateur)108 681.6 R
-(radio satellites in elliptical orbits, such as the Phase 3 satellites.)
-108 693.6 Q(Orbital phase is zero at perigee.)5 E(KD2BD Softw)72 768 Q
-133.005(are 15)-.1 F(May 2006)2.5 E(9)202.335 E EP
+(ving south to north.)-.15 E F1(Azimuth:)72 669.6 Q F0 .174
+(The compass direction measured clockwise from true north.)108 681.6 R
+.174(North = 0 de)5.174 F .174(grees, East = 90 de)-.15 F .174
+(grees, South =)-.15 F(180 de)108 693.6 Q(grees, and W)-.15 E
+(est = 270 de)-.8 E(grees.)-.15 E(KD2BD Softw)72 768 Q 133.005(are 05)
+-.1 F(May 2018)2.5 E(9)202.335 E 0 Cg EP
 %%Page: 10 10
 %%BeginPageSetup
 BP
 %%EndPageSetup
 /F0 10/Times-Roman@0 SF 142.255(PREDICT\(1\) KD2BD)72 48 R(Softw)2.5 E
-142.255(are PREDICT\(1\))-.1 F/F1 10.95/Times-Bold@0 SF -.11(Pa)72 84 S
+142.255(are PREDICT\(1\))-.1 F/F1 10.95/Times-Bold@0 SF
+(Descending Node:)72 84 Q F0(Point in a satellite')108 96 Q 2.5(so)-.55
+G(rbit when its sub-satellite point crosses the equator mo)-2.5 E
+(ving north to south.)-.15 E F1(Doppler Shift:)72 112.8 Q F0 .54
+(The motion of a satellite in its orbit around the earth, and in man)108
+124.8 R 3.041(yc)-.15 G .541(ases the rotational motion of the earth)
+-3.041 F .924
+(itself, causes radio signals generated by satellites to be recei)108
+136.8 R -.15(ve)-.25 G 3.423(do).15 G 3.423(nE)-3.423 G .923
+(arth at frequencies slightly dif)-3.423 F(ferent)-.25 E .895
+(than those upon which the)108 148.8 R 3.396(yw)-.15 G .896
+(ere transmitted.)-3.396 F/F2 10/Times-Bold@0 SF(PREDICT)3.396 E F0 .896
+(calculates what ef)3.396 F .896(fect these motions ha)-.25 F 1.196 -.15
+(ve u)-.2 H(pon).15 E(the reception of satellites transmitting on the 1\
+46 MHz and 435 MHz Amateur Radio bands.)108 160.8 Q F1(Ele)72 177.6 Q
+-.11(va)-.164 G(tion:).11 E F0 .336(The angle between the local horizon\
+ and the position of the satellite. A satellite that appears directly a\
+bo)108 189.6 R -.15(ve)-.15 G 2.789(ap)108 201.6 S .289
+(articular location is said to be located at an ele)-2.789 F -.25(va)
+-.25 G .29(tion of 90 de).25 F .29
+(grees. A satellite located on the horizon of)-.15 F 3.078(ap)108 213.6
+S .578(articular location is said to be located at an ele)-3.078 F -.25
+(va)-.25 G .578(tion of 0 de).25 F 3.078(grees. A)-.15 F .578
+(satellite with an ele)3.078 F -.25(va)-.25 G .578(tion of less).25 F
+.265(than zero is positioned belo)108 225.6 R 2.765(wt)-.25 G .265(he l\
+ocal horizon, and radio communication with a satellite in such a positi\
+on)-2.765 F(is not possible under normal circumstances.)108 237.6 Q F1
+-.274(Fo)72 254.4 S(otprint:).274 E F0 .05(Diameter of the Earth')108
+266.4 R 2.55(ss)-.55 G(urf)-2.55 E .05(ace visible from a satellite.)-.1
+F .049(The higher the satellite')5.049 F 2.549(so)-.55 G .049
+(rbital altitude, the greater)-2.549 F
+(the footprint, and the wider the satellite')108 278.4 Q 2.5(sc)-.55 G
+(ommunications co)-2.5 E -.15(ve)-.15 G(rage.).15 E F1(LOS:)72 295.2 Q
+F0 .622(Loss of Signal - the time at which a ground station loses radio\
+ contact with a satellite.)108 307.2 R F2(PREDICT)3.123 E F0(de\214nes)
+3.123 E(LOS as the time when the satellite being track)108 319.2 Q
+(ed comes within +/- 0.03 de)-.1 E(grees of the local horizon.)-.15 E F1
+(Orbital Phase:)72 336 Q F0 .435
+(An orbital "clock" that describes a satellite')108 348 R 2.934(so)-.55
+G .434(rbital position with respect to perigee. Orbital Phase may be)
+-2.934 F 1.379(modulo 256, or modulo 360, and is sometimes referred to \
+as mean anomaly when speaking of amateur)108 360 R
+(radio satellites in elliptical orbits, such as the Phase 3 satellites.)
+108 372 Q(Orbital phase is zero at perigee.)5 E F1 -.11(Pa)72 388.8 S
 (th Loss:).11 E F0 .013(The apparent attenuation a radio signal under)
-108 96 R .013(goes as it tra)-.18 F -.15(ve)-.2 G .013(ls a gi).15 F
+108 400.8 R .013(goes as it tra)-.18 F -.15(ve)-.2 G .013(ls a gi).15 F
 -.15(ve)-.25 G 2.513(nd).15 G .013
-(istance. This attenuation is the result)-2.513 F .198
-(of the dispersion radio w)108 108 R -2.25 -.2(av e)-.1 H 2.697(se).2 G
-.197(xperience as the)-2.847 F 2.697(yp)-.15 G(ropag)-2.697 E .197
-(ate between transmitter and recei)-.05 F -.15(ve)-.25 G 2.697(ru).15 G
-.197(sing antennas)-2.697 F(of \214nite g)108 120 Q(ain. Free space pat\
-h loss is technically an oxymoron since free space is loss free.)-.05 E
-F1 -.219(Pe)72 136.8 S(rigee:).219 E F0(Point in a satellite')108 148.8
-Q 2.5(so)-.55 G
+(istance. This attenuation is the result)-2.513 F .197
+(of the dispersion radio w)108 412.8 R -2.25 -.2(av e)-.1 H 2.697(se).2
+G .197(xperience as the)-2.847 F 2.697(yp)-.15 G(ropag)-2.697 E .197
+(ate between transmitter and recei)-.05 F -.15(ve)-.25 G 2.698(ru).15 G
+.198(sing antennas)-2.698 F(of \214nite g)108 424.8 Q(ain. Free space p\
+ath loss is technically an oxymoron since free space is loss free.)-.05
+E F1 -.219(Pe)72 441.6 S(rigee:).219 E F0(Point in a satellite')108
+453.6 Q 2.5(so)-.55 G
 (rbit when the satellite is at its closest distance to the earth')-2.5 E
-2.5(ss)-.55 G(urf)-2.5 E(ace.)-.1 E F1(Nodal P)72 165.6 Q(eriod:)-.219 E
-F0 2.5(As)108 177.6 S
+2.5(ss)-.55 G(urf)-2.5 E(ace.)-.1 E F1(Nodal P)72 470.4 Q(eriod:)-.219 E
+F0 2.5(As)108 482.4 S
 (atellite orbital parameter specifying the time between successi)-2.5 E
-.3 -.15(ve a)-.25 H(scending nodes.).15 E F1(Slant Range:)72 194.4 Q F0
+.3 -.15(ve a)-.25 H(scending nodes.).15 E F1(Slant Range:)72 499.2 Q F0
 (The straight line distance between the ground station and the satellit\
-e at a gi)108 206.4 Q -.15(ve)-.25 G 2.5(nt).15 G(ime.)-2.5 E F1
-(Sub-Satellite P)72 223.2 Q(oint:)-.219 E F0(The latitude and longitude\
- specifying the location on the Earth that is directly belo)108 235.2 Q
-2.5(wt)-.25 G(he satellite.)-2.5 E F1(ADDITION)72 264 Q(AL INFORMA)-.219
-E(TION)-1.04 E F0 .586(Detailed information on the operation of)108 276
-R/F2 10/Times-Bold@0 SF(PREDICT')3.086 E(s)-.37 E F0 .586(UDP sock)3.086
-F .587(et-based interf)-.1 F .587(ace as well as sample code)-.1 F .61
-(for writing your o)108 288 R .61(wn client applications is a)-.25 F
+e at a gi)108 511.2 Q -.15(ve)-.25 G 2.5(nt).15 G(ime.)-2.5 E F1
+(Sub-Satellite P)72 528 Q(oint:)-.219 E F0(The latitude and longitude s\
+pecifying the location on the Earth that is directly belo)108 540 Q 2.5
+(wt)-.25 G(he satellite.)-2.5 E F1(ADDITION)72 568.8 Q(AL INFORMA)-.219
+E(TION)-1.04 E F0 .587(Detailed information on the operation of)108
+580.8 R F2(PREDICT')3.087 E(s)-.37 E F0 .586(UDP sock)3.086 F .586
+(et-based interf)-.1 F .586(ace as well as sample code)-.1 F .61
+(for writing your o)108 592.8 R .61(wn client applications is a)-.25 F
 -.25(va)-.2 G .61(ilable in the).25 F/F3 10/Times-Italic@0 SF(pr)3.11 E
 (edict/clients/samples)-.37 E F0(subdirectory)3.11 E 5.61(.T)-.65 G .61
-(he latest)-5.61 F(ne)108 300 Q 10.61(ws is a)-.25 F -.25(va)-.2 G
+(he latest)-5.61 F(ne)108 604.8 Q 10.611(ws is a)-.25 F -.25(va)-.2 G
 10.611(ilable through the of).25 F(\214cial)-.25 E F2(PREDICT)13.111 E
 F0(softw)13.111 E 10.611(are web page located at:)-.1 F(<http://www)108
-312 Q(.qsl.net/kd2bd/predict.html>.)-.65 E F1(FILES)72 328.8 Q/F4 10
-/Courier@0 SF(~/.predict/predict.tle)108 340.8 Q F0(Def)144 352.8 Q
-(ault database of orbital data)-.1 E F4(~/.predict/predict.db)108 369.6
-Q F0(Satellite transponder database \214le)144 381.6 Q F4
-(~/.predict/predict.qth)108 398.4 Q F0(Def)144 410.4 Q
-(ault ground station location information)-.1 E F1 -.548(AU)72 439.2 S
-(THORS).548 E F2(PREDICT)108 451.2 Q F0 -.1(wa)2.543 G 2.543(sw).1 G
-.042(ritten by John A. Magliacane, KD2BD <kd2bd@amsat.or)-2.543 F 2.542
-(g>. The)-.18 F(sock)2.542 E .042(et serv)-.1 F .042(er code w)-.15 F
-(as)-.1 E(contrib)108 463.2 Q .663(uted by Iv)-.2 F .663
+616.8 Q(.qsl.net/kd2bd/predict.html>.)-.65 E F1(FILES)72 633.6 Q/F4 10
+/Courier@0 SF(~/.predict/predict.tle)108 645.6 Q F0(Def)144 657.6 Q
+(ault database of orbital data)-.1 E F4(~/.predict/predict.db)108 674.4
+Q F0(Satellite transponder database \214le)144 686.4 Q F4
+(~/.predict/predict.qth)108 703.2 Q F0(Def)144 715.2 Q
+(ault ground station location information)-.1 E(KD2BD Softw)72 768 Q
+133.005(are 05)-.1 F(May 2018)2.5 E(10)197.335 E 0 Cg EP
+%%Page: 11 11
+%%BeginPageSetup
+BP
+%%EndPageSetup
+/F0 10/Times-Roman@0 SF 142.255(PREDICT\(1\) KD2BD)72 48 R(Softw)2.5 E
+142.255(are PREDICT\(1\))-.1 F/F1 10.95/Times-Bold@0 SF -.548(AU)72 84 S
+(THORS).548 E/F2 10/Times-Bold@0 SF(PREDICT)108 96 Q F0 -.1(wa)2.542 G
+2.542(sw).1 G .042(ritten by John A. Magliacane, KD2BD <kd2bd@amsat.or)
+-2.542 F 2.542(g>. The)-.18 F(sock)2.543 E .043(et serv)-.1 F .043
+(er code w)-.15 F(as)-.1 E(contrib)108 108 Q .663(uted by Iv)-.2 F .663
 (an Galysh, KD4HBO <g)-.25 F(alysh@juno.nrl.na)-.05 E(vy)-.2 E 3.163
 (.mil>. The)-.65 F(PIC/TRA)3.163 E .663(CK serial port antenna)-.4 F
-1.964(rotator controller code w)108 475.2 R 1.964(as contrib)-.1 F 1.964
+1.964(rotator controller code w)108 120 R 1.964(as contrib)-.1 F 1.964
 (uted by V)-.2 F 1.964(ittorio Ben)-.6 F -.15(ve)-.4 G 1.964
-(nuti, I3VFJ <benscosm@iol.it>.).15 F(SGP4/SDP4)6.964 E .265(code w)108
-487.2 R .265(as deri)-.1 F -.15(ve)-.25 G 2.765(df).15 G .265(rom P)
--2.765 F .265(acsal routines written by Dr)-.15 F 2.765(.T)-.55 G .265
-(.S. K)-3.505 F .265(elso, and con)-.25 F -.15(ve)-.4 G .266
-(rted to 'C' by Neoklis K).15 F(yriazis,)-.25 E 2.5(5B4AZ. See)108 499.2
-R(the CREDITS \214le for additional information.)2.5 E(KD2BD Softw)72
-768 Q 133.005(are 15)-.1 F(May 2006)2.5 E(10)197.335 E EP
+(nuti, I3VFJ <benscosm@iol.it>.).15 F(SGP4/SDP4)6.964 E .266(code w)108
+132 R .266(as deri)-.1 F -.15(ve)-.25 G 2.766(df).15 G .266(rom P)-2.766
+F .265(acsal routines written by Dr)-.15 F 2.765(.T)-.55 G .265(.S. K)
+-3.505 F .265(elso, and con)-.25 F -.15(ve)-.4 G .265
+(rted to 'C' by Neoklis K).15 F(yriazis,)-.25 E 2.5(5B4AZ. See)108 144 R
+(the CREDITS \214le for additional information.)2.5 E(KD2BD Softw)72 768
+Q 133.005(are 05)-.1 F(May 2018)2.5 E(11)197.335 E 0 Cg EP
 %%Trailer
 end
 %%EOF

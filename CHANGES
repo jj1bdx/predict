@@ -1,3 +1,29 @@
+Release 2.2.6:
+By John A. Magliacane <kd2bd@amsat.org> (20-May-2020):
+
+* The installer program has been replaced by a bash script that
+  configures, compiles, and installs PREDICT and several companion
+  client utility applications.
+
+* The SingleTrack and MultiTrack displays have been modified for
+  more consistent performance across a wider range of terminals.
+
+* PREDICT's "vocalizer" now employs the Advanced Linux Sound
+  Architecture (ALSA) environment instead of OSS in response
+  to recent changes in v5.6 and later Linux kernels.
+
+* The handling of geosynchronous and geostationary satellites
+  has been improved, but still needs to be used with caution.
+
+* 100 MHz normalized downlink Doppler shift information has been
+  added to all -p and -f command-line outputs.  
+
+* The documentation and the transponder database file have been
+  updated, and the format of the man page has been corrected.
+
+
+----------------------------------------------------------------------------
+
 Release 2.2.5:
 By John A. Magliacane <kd2bd@amsat.org> (05-May-2018):
 

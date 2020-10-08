@@ -88,6 +88,29 @@ Mode J FM Transponder
 No weekly schedule
 No orbital schedule
 end
+HUSKYSAT-1
+45119
+No alat, alon
+Mode V/U Linear Transponder
+145.910, 145.940
+435.840, 435.810
+No weekly schedule
+No orbital schedule
+1200 bps BPSK Telemetry Beacon
+0.0, 0.0
+435.800, 435.800
+No weekly schedule
+No orbital schedule
+end
+DIWATA-2B
+43678
+No alat, alon
+Mode J FM Transponder (141.3 Hz PL)
+145.900, 145.900
+437.500, 437.500
+No weekly schedule
+No orbital schedule
+end
 OSCAR-29
 24278
 No alat, alon
@@ -118,6 +141,53 @@ No alat, alon
 Mode A Transponder
 145.858, 145.898
 29.354, 29.394
+No weekly schedule
+No orbital schedule
+end
+OSCAR-95
+43770
+No alat, alon
+Mode U/V FM Transponder (67.0 Hz PL)
+435.300, 435.300
+145.920, 145.920
+No weekly schedule
+No orbital schedule
+Mode L/V FM Transponder (67.0 Hz PL)
+1267.300, 1267.300
+145.920, 145.920
+No weekly schedule
+No orbital schedule
+end
+OSCAR-99
+43937
+No alat, alon
+Mode V/U Linear Transponder
+145.900, 145.930
+435.910, 435.880
+No weekly schedule
+No orbital schedule
+Beacon 1
+0.0, 0.0
+435.900, 435.900
+No weekly schedule
+No orbital schedule
+Beacon 2
+0.0, 0.0
+437.075, 437.075
+No weekly schedule
+No orbital schedule
+end
+RS-44
+44909
+No alat, alon
+Mode V/U Linear Transponder
+145.935, 145.995
+435.670, 435.610
+No weekly schedule
+No orbital schedule
+Beacon
+0.0, 0.0
+435.605, 435.605
 No weekly schedule
 No orbital schedule
 end
@@ -183,12 +253,12 @@ Telemetry Downlink
 No weekly schedule
 no orbital schedule
 end
-NOAA-14
-23455
+NOAA-18
+28654
 No alat, alon
 APT Downlink
 0.0, 0.0
-137.620, 137.620
+137.9125, 137.9125
 No weekly schedule
 No orbital schedule
 HRPT Downlink
@@ -197,31 +267,17 @@ HRPT Downlink
 No weekly schedule
 No orbital schedule
 end
-NOAA-15
-25338
+NOAA-19
+33591
 No alat, alon
 APT Downlink
 0.0, 0.0
-137.500, 137.500
+137.100, 137.100
 No weekly schedule
 No orbital schedule
 HRPT Downlink
 0.0, 0.0
-1702.5, 1702.5
-No weekly schedule
-No orbital schedule
-end
-NOAA-17
-27453
-No alat, alon
-APT Downlink
-0.0, 0.0
-137.620, 137.620
-No weekly schedule
-No orbital schedule
-HRPT Downlink
-0.0, 0.0
-1707.0, 1707.0
+1698.0, 1698.0
 No weekly schedule
 No orbital schedule
 end
@@ -286,12 +342,49 @@ No alat, alon
 No weekly schedule
 No orbital schedule
 end
-OSCAR-50
+SAUDISAT-1
 27607
 No alat, alon
 Mode V/U FM Repeater (67 Hz PL)
 145.850, 145.850
-436.800, 436.800
+436.795, 436.795
+No weekly schedule
+No orbital schedule
+end
+OSCAR-73
+39444
+No alat, alon
+Mode U/V Linear Transponder
+435.130, 435.150
+145.970, 145.950
+No weekly schedule
+No orbital schedule
+1200 bps BPSK Beacon
+0.0, 0.0
+145.935,145.935
+No weekly schedule
+No orbital schedule
+end`
+OSCAR-91
+43017
+No alat, alon
+Mode U/V FM Transponder (67.0 Hz PL)
+435.250, 435.250
+145.960, 145.960
+No weekly schedule
+No orbital schedule
+end
+OSCAR-92
+43137
+No alat, alon
+Mode U/V FM Transponder (67.0 Hz PL)
+435.350, 435.350
+145.880, 145.880
+No weekly schedule
+No orbital schedule
+Mode L/V FM Transponder (67.0 Hz PL)
+1267.350, 1267.350
+145.880, 145.880
 No weekly schedule
 No orbital schedule
 end

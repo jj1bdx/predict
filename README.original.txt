@@ -27,7 +27,7 @@ is provided for all system users (such as /usr/src or /usr/local/src for
 Slackware Linux).  As root, move the tar file to such a directory and
 issue the command:
 
-	tar xvfz predict-2.2.3.tar.gz
+	tar xvfz predict-2.2.6.tar.gz
 
 to unpack the file.
 
@@ -49,10 +49,6 @@ other than /usr/local/bin is desired, invoke configure with the desired
 directory as an argument on the command line:
 
 	./configure /usr/bin
-
-NOTE: "configure" may stall if the system soundcard is in use.  Some
-window managers (sometimes KDE) take control of the soundcard, and prevent
-the configure script from opening /dev/dsp and checking its existence. 
 
 
 FIRST TIME USE
@@ -84,5 +80,5 @@ Happy Tracking!
 --
 John, KD2BD
 kd2bd@amsat.org
-May 2006
+May 2020
 

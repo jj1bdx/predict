@@ -1,19 +1,14 @@
 #!/bin/sh
-# This script builds the man page, pdf, postscript, html,
-# and text documentation from the groff source "predict.man".
-echo -n "Creating postscript file... "
-groff -T ps -man predict.man > ../postscript/predict.ps
+# This script builds the documentation in pdf, text, and html
+# from the man page, which is written in groff.
+echo "Creating documentation in: "
+echo -ne "\n\tPDF... "
+groff -T pdf -man predict.1 > ../pdf/predict.pdf
 echo
-echo -n "Creating man page... "
-groff -T ascii -man predict.man > predict.1
+echo -ne "\tUTF-8 text... "
+groff -T utf8 -man predict.1 > ../text/predict.txt
 echo
-echo -n "Creating text file... "
-ul -t dumb predict.1 > ../text/predict.txt
-echo
-#echo -n "Creating HTML file... "
-#groff -T html -man predict.man > ../html/predict.html
-#echo
-echo -n "Creating pdf file... "
-ps2pdf ../postscript/predict.ps ../pdf/predict.pdf
+echo -ne "\tHTML... "
+groff -T html -man predict.1 > ../html/predict.html
 echo
 echo "Done!"
