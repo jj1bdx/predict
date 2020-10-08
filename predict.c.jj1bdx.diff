@@ -1,0 +1,231 @@
+--- predict-2.2.6.c	2020-10-08 13:48:09.000000000 +0900
++++ predict.c	2020-10-08 14:21:52.000000000 +0900
+@@ -173,11 +173,11 @@
+     sun_dec, sun_lat, sun_lon, sun_range, sun_range_rate, moon_az, moon_el,
+     moon_dx, moon_ra, moon_dec, moon_gha, moon_dv;
+ 
+-char qthfile[50], tlefile[50], dbfile[50], output[25], temp[255],
++char qthfile[50], tlefile[50], dbfile[50], temp[80], output[25],
+     serial_port[15], resave = 0, reload_tle = 0, netport[10],
+                      once_per_second = 0, ephem[5], sat_sun_status, findsun,
+                      calc_squint, database = 0, xterm, io_lat = 'N',
+-                     io_lon = 'W';
++                     io_lon = 'E';
+ 
+ int indx, antfd, iaz, iel, ma256, isplat, isplong, socket_flag = 0, Flags = 0;
+ 
+@@ -2360,7 +2360,7 @@
+   clear();
+   refresh();
+ 
+-  attrset(COLOR_PAIR(5) | A_BOLD);
++  attrset(COLOR_PAIR(6) | A_REVERSE | A_BOLD);
+   mvprintw(3, 18, "                                           ");
+   mvprintw(4, 18, "         --== PREDICT  v%s ==--         ", version);
+   mvprintw(5, 18, "   Released by John A. Magliacane, KD2BD   ");
+@@ -4004,6 +4004,27 @@
+   return (FindAOS());
+ }
+ 
++// Convert longitude value range
++// from: [0, 180)[180, 360)
++// to: [0, 180)[-180, 0)
++// The integer and double functions are necessary.
++
++int IntLonDisp(int x) {
++  if (x >= 180) {
++    return x - 360;
++  } else {
++    return x;
++  }
++}
++
++double DoubleLonDisp(double x) {
++  if (x >= 180.0) {
++    return x - 360.0;
++  } else {
++    return x;
++  }
++}
++
+ int Print(string, mode) char *string, mode;
+ {
+   /* This function buffers and displays orbital predictions
+@@ -4284,18 +4305,20 @@
+       while (iel >= 0 && quit == 0) {
+         if (calc_squint)
+ 
+-          snprintf(
+-              string, 80, "      %s%4d %4d  %4d  %4d   %4d   %6ld  %4.0f %c\n",
+-              Daynum2String(daynum), iel, iaz, ma256,
+-              (io_lat == 'N' ? +1 : -1) * isplat,
+-              (io_lon == 'W' ? isplong : 360 - isplong), irk, squint, findsun);
++          snprintf(string, 80,
++                   "      %s%4d %4d  %4d  %4d   %4d   %6ld  %4.0f %c\n",
++                   Daynum2String(daynum), iel, iaz, ma256,
++                   (io_lat == 'N' ? +1 : -1) * isplat,
++                   IntLonDisp(io_lon == 'W' ? isplong : 360 - isplong), irk,
++                   squint, findsun);
+ 
+         else
+           snprintf(string, 80,
+                    "      %s%4d %4d  %4d  %4d   %4d   %6ld  %6ld %c\n",
+                    Daynum2String(daynum), iel, iaz, ma256,
+                    (io_lat == 'N' ? +1 : -1) * isplat,
+-                   (io_lon == 'W' ? isplong : 360 - isplong), irk, rv, findsun);
++                   IntLonDisp(io_lon == 'W' ? isplong : 360 - isplong), irk, rv,
++                   findsun);
+ 
+         lastel = iel;
+ 
+@@ -4328,18 +4351,20 @@
+         Calc();
+ 
+         if (calc_squint)
+-          snprintf(
+-              string, 80, "      %s%4d %4d  %4d  %4d   %4d   %6ld  %4.0f %c\n",
+-              Daynum2String(daynum), iel, iaz, ma256,
+-              (io_lat == 'N' ? +1 : -1) * isplat,
+-              (io_lon == 'W' ? isplong : 360 - isplong), irk, squint, findsun);
++          snprintf(string, 80,
++                   "      %s%4d %4d  %4d  %4d   %4d   %6ld  %4.0f %c\n",
++                   Daynum2String(daynum), iel, iaz, ma256,
++                   (io_lat == 'N' ? +1 : -1) * isplat,
++                   IntLonDisp(io_lon == 'W' ? isplong : 360 - isplong), irk,
++                   squint, findsun);
+ 
+         else
+           snprintf(string, 80,
+                    "      %s%4d %4d  %4d  %4d   %4d   %6ld  %6ld %c\n",
+                    Daynum2String(daynum), iel, iaz, ma256,
+                    (io_lat == 'N' ? +1 : -1) * isplat,
+-                   (io_lon == 'W' ? isplong : 360 - isplong), irk, rv, findsun);
++                   IntLonDisp(io_lon == 'W' ? isplong : 360 - isplong), irk, rv,
++                   findsun);
+ 
+         if (mode == 'p')
+           quit = Print(string, 'p');
+@@ -4947,7 +4972,7 @@
+   bkgdset(COLOR_PAIR(3));
+   clear();
+ 
+-  attrset(COLOR_PAIR(5) | A_BOLD);
++  attrset(COLOR_PAIR(6) | A_REVERSE | A_BOLD);
+ 
+   mvprintw(0, 0,
+            "                                                                   "
+@@ -5006,7 +5031,7 @@
+   }
+ 
+   do {
+-    attrset(COLOR_PAIR(5) | A_BOLD);
++    attrset(COLOR_PAIR(6) | A_REVERSE | A_BOLD);
+     daynum = CurrentDaynum();
+ 
+     mvprintw(2, 55 - spaces, "On: %s", Daynum2String(daynum));
+@@ -5030,7 +5055,7 @@
+     mvprintw(8 + tshift, 68, "%-5.0f", sat_range);
+ 
+     mvprintw(8 + tshift, 1, "%-7.2f",
+-             (io_lon == 'W' ? 360.0 - sat_lon : sat_lon));
++             DoubleLonDisp(io_lon == 'W' ? 360.0 - sat_lon : sat_lon));
+     mvprintw(7 + tshift, 15, "%-7.2f", sat_azi);
+     mvprintw(8 + tshift, 14, "%+-6.2f", sat_ele);
+     mvprintw(7 + tshift, 29, "%0.f ", (3600.0 * sat_vel) * km2mi);
+@@ -5137,6 +5162,7 @@
+           mvprintw(14, 67, "              ");
+       }
+ 
++#if 0
+       if (speak == 'T' && soundcard) {
+         if (eclipse_alarm == 0 && fabs(eclipse_depth) < 0.015) /* ~1 deg */
+         {
+@@ -5185,6 +5211,7 @@
+           oldtime = CurrentDaynum();
+         }
+       }
++#endif
+     }
+ 
+     else {
+@@ -5282,12 +5309,14 @@
+       mvprintw(22, 22, "Next AOS: %s UTC", Daynum2String(nextaos));
+       aoslos = nextaos;
+ 
++#if 0
+       if (oldtime != 0.0 && speak == 'T' && soundcard) {
+         /* Announce LOS */
+ 
+         sprintf(command, "%svocalizer/vocalizer los &", predictpath);
+         system(command);
+       }
++#endif
+     }
+ 
+     /* This is where the variables for the socket server are updated. */
+@@ -5427,7 +5456,7 @@
+     fprintf(stderr, "\033]0;PREDICT: Multi-Satellite Tracking Mode\007");
+ 
+   curs_set(0);
+-  attrset(COLOR_PAIR(5) | A_BOLD);
++  attrset(COLOR_PAIR(6) | A_REVERSE | A_BOLD);
+   clear();
+ 
+   mvprintw(0, 0,
+@@ -5506,8 +5535,8 @@
+         mvprintw(y + 6, x, "%-10s%3.0f  %+3.0f  %3.0f   %3.0f %6.0f %c",
+                  Abbreviate(sat[indx].name, 9), sat_azi, sat_ele,
+                  (io_lat == 'N' ? +1 : -1) * sat_lat,
+-                 (io_lon == 'W' ? 360.0 - sat_lon : sat_lon), sat_range,
+-                 sunstat);
++                 DoubleLonDisp(io_lon == 'W' ? 360.0 - sat_lon : sat_lon),
++                 sat_range, sunstat);
+ 
+         if (socket_flag) {
+           az_array[indx] = sat_azi;
+@@ -5604,7 +5633,8 @@
+       }
+     }
+ 
+-    attrset(COLOR_PAIR(5) | A_BOLD);
++    attrset(COLOR_PAIR(6) | A_REVERSE | A_BOLD);
++
+     daynum = CurrentDaynum();
+     mvprintw(2, 39, "%s", Daynum2String(daynum));
+ 
+@@ -5830,10 +5860,12 @@
+ 
+   printw("\t\tVocalizer       : ");
+ 
++#if 0
+   if (soundcard)
+     printw("Soundcard present");
+   else
+-    printw("No soundcard available");
++#endif
++  printw("No soundcard available");
+ 
+   refresh();
+   attrset(COLOR_PAIR(4) | A_BOLD);
+@@ -6479,13 +6511,15 @@
+     scrollok(stdscr, TRUE);
+     curs_set(0);
+ 
++    // Color scheme changed in a sane style
++    // by @jj1bdx
+     init_pair(1, COLOR_WHITE, COLOR_BLACK);
+-    init_pair(2, COLOR_WHITE, COLOR_BLUE);
+-    init_pair(3, COLOR_YELLOW, COLOR_BLUE);
+-    init_pair(4, COLOR_CYAN, COLOR_BLUE);
+-    init_pair(5, COLOR_WHITE, COLOR_RED);
+-    init_pair(6, COLOR_RED, COLOR_WHITE);
+-    init_pair(7, COLOR_CYAN, COLOR_RED);
++    init_pair(2, COLOR_WHITE, COLOR_BLACK);
++    init_pair(3, COLOR_YELLOW, COLOR_BLACK);
++    init_pair(4, COLOR_CYAN, COLOR_BLACK);
++    init_pair(5, COLOR_GREEN, COLOR_BLACK);
++    init_pair(6, COLOR_BLACK, COLOR_CYAN);
++    init_pair(7, COLOR_CYAN, COLOR_WHITE);
+ 
+     if (x < 3) {
+       /* A problem occurred reading the
