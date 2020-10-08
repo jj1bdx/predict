@@ -2030,7 +2030,7 @@ int passivesock(char *service, char *protocol, int qlen) {
     exit(-1);
   }
 
-  if ((type = SOCK_STREAM && listen(s, qlen)) < 0) {
+  if ((type = SOCK_STREAM && listen(sd, qlen)) < 0) {
     bailout("Listen fail");
     exit(-1);
   }
