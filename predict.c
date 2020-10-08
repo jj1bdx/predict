@@ -173,7 +173,7 @@ double tsince, jul_epoch, jul_utc,
     sun_dec, sun_lat, sun_lon, sun_range, sun_range_rate, moon_az, moon_el,
     moon_dx, moon_ra, moon_dec, moon_gha, moon_dv;
 
-char qthfile[50], tlefile[50], dbfile[50], temp[80], output[25],
+char qthfile[50], tlefile[50], dbfile[50], temp[256], output[25],
     serial_port[15], resave = 0, reload_tle = 0, netport[10],
                      once_per_second = 0, ephem[5], sat_sun_status, findsun,
                      calc_squint, database = 0, xterm, io_lat = 'N',
