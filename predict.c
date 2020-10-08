@@ -19,6 +19,11 @@
 *   generously contributed their time, talent, and effort to this project.  *
 \***************************************************************************/
 
+/*
+ * Code modified by Kenji Rikitake, JJ1BDX
+ * for macOS portability and bugfix
+ */
+
 #include <ctype.h>
 #include <curses.h>
 #include <fcntl.h>
@@ -2364,7 +2369,7 @@ void Banner() {
   mvprintw(3, 18, "                                           ");
   mvprintw(4, 18, "         --== PREDICT  v%s ==--         ", version);
   mvprintw(5, 18, "   Released by John A. Magliacane, KD2BD   ");
-  mvprintw(6, 18, "                  May 2020                 ");
+  mvprintw(6, 18, "      May 2020, modified by JJ1BDX         ");
   mvprintw(7, 18, "                                           ");
 }
 
