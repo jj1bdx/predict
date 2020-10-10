@@ -5066,7 +5066,7 @@ char speak;
     mvprintw(7 + tshift, 29, "%0.f ", (3600.0 * sat_vel) * km2mi);
     mvprintw(8 + tshift, 29, "%0.f ", 3600.0 * sat_vel);
 
-    mvprintw(18 + bshift, 3, "%+6.2f%c  ", eclipse_depth / deg2rad, 176);
+    mvprintw(18 + bshift, 2, "%+6.2f deg", eclipse_depth / deg2rad);
     mvprintw(18 + bshift, 20, "%5.1f", 256.0 * (phase / twopi));
     mvprintw(18 + bshift, 37, "%s", ephem);
 
