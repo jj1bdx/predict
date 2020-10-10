@@ -5537,7 +5537,7 @@ void MultiTrack() {
         else
           sunstat = 'N';
 
-        mvprintw(y + 6, x, "%-10s%3.0f  %+3.0f  %3.0f   %3.0f %6.0f %c",
+        mvprintw(y + 6, x, "%-10s%3.0f  %+3.0f  %3.0f  %4.0f %6.0f %c",
                  Abbreviate(sat[indx].name, 9), sat_azi, sat_ele,
                  (io_lat == 'N' ? +1 : -1) * sat_lat,
                  DoubleLonDisp(io_lon == 'W' ? 360.0 - sat_lon : sat_lon),
